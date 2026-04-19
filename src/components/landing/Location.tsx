@@ -10,11 +10,11 @@ export function Location() {
   return (
     <section id="location" className="relative overflow-hidden bg-card px-6 py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center lg:items-start lg:gap-20">
           <div className="space-y-12">
             <div>
               <h2 className="text-accent-light font-bold uppercase tracking-[0.3em] text-xs mb-4">{sectionConfig.title}</h2>
-              <h3 className="text-4xl font-black uppercase tracking-tighter text-card-foreground md:text-6xl">{sectionConfig.subtitle}</h3>
+              <h3 className="text-4xl font-black uppercase tracking-tighter text-card-foreground md:text-6xl lg:text-5xl">{sectionConfig.subtitle}</h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -91,12 +91,12 @@ export function Location() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative lg:self-stretch lg:flex lg:flex-col">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="aspect-video overflow-hidden rounded-3xl border border-border grayscale transition-colors duration-300 lg:aspect-square"
+              className="aspect-video overflow-hidden rounded-3xl border border-border grayscale transition-colors duration-300 lg:aspect-auto lg:flex-1 lg:min-h-[480px]"
             >
               {/* This would be a Google Map in a real world app */}
               <div className="absolute inset-0 flex items-center justify-center bg-muted p-12 text-center transition-colors duration-300">

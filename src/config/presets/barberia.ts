@@ -331,7 +331,7 @@ export const barberiaPreset: NichePreset = {
       images: [
         "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1593702295094-172f3e098808?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1761148438883-e34e0289a214?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1654097800183-574ba7368f74?auto=format&fit=crop&q=80&w=600",
       ],

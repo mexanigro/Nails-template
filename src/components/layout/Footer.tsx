@@ -23,7 +23,7 @@ export function Footer({
 
   return (
     <footer className="border-t border-border bg-muted py-20 px-6 transition-colors duration-300 dark:bg-background">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 lg:items-start">
         <div className="space-y-6">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-accent-light rounded flex items-center justify-center">
@@ -84,6 +84,56 @@ export function Footer({
             )}
           </ul>
         </div>
+
+        {/* Column 3 — Contact (fills desktop; stacks cleanly on mobile/tablet) */}
+        <div>
+          <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-foreground">Contact</h4>
+          <ul className="space-y-4 text-sm text-muted-foreground transition-colors duration-300">
+            <li className="flex items-start gap-2">
+              <MapPin size={14} className="mt-0.5 shrink-0 text-accent-light" />
+              <span>{contact.address.street}, {contact.address.district}, {contact.address.cityStateZip}</span>
+            </li>
+            <li>
+              <a href={`tel:${contact.phone}`} className="flex items-center gap-2 transition-colors hover:text-accent-light">
+                <Phone size={14} className="shrink-0 text-accent-light" />
+                {contact.phone}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${contact.email}`} className="flex items-center gap-2 transition-colors hover:text-accent-light">
+                <Mail size={14} className="shrink-0 text-accent-light" />
+                {contact.email}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 4 — Hours (fills desktop; stacks cleanly on mobile/tablet) */}
+        <div>
+          <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-foreground">Hours</h4>
+          <ul className="space-y-2 text-xs text-muted-foreground transition-colors duration-300">
+            <li className="flex justify-between gap-4 border-b border-border pb-2">
+              <span>Mon – Thu</span>
+              <span className="font-bold text-foreground">{hours.monday?.start} – {hours.monday?.end}</span>
+            </li>
+            <li className="flex justify-between gap-4 border-b border-border pb-2">
+              <span>Friday</span>
+              <span className="font-bold text-foreground">{hours.friday?.start} – {hours.friday?.end}</span>
+            </li>
+            <li className="flex justify-between gap-4 border-b border-border pb-2">
+              <span>Saturday</span>
+              <span className="font-bold text-foreground">{hours.saturday?.start} – {hours.saturday?.end}</span>
+            </li>
+            <li className="flex justify-between gap-4">
+              <span>Sunday</span>
+              {hours.sunday ? (
+                <span className="font-bold text-foreground">{hours.sunday.start} – {hours.sunday.end}</span>
+              ) : (
+                <span className="font-black uppercase text-[10px] tracking-widest text-muted-foreground">Closed</span>
+              )}
+            </li>
+          </ul>
+        </div>
       </div>
       
       <div className="mx-auto mt-20 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border pt-8 text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-300 md:flex-row">
@@ -97,7 +147,7 @@ export function Footer({
             }}
             className="cursor-pointer transition-colors hover:text-accent-light"
           >
-            Política de Privacidad
+            Privacy Policy
           </a>
           <a
             href={LEGAL_ROUTES.terms}
@@ -107,7 +157,7 @@ export function Footer({
             }}
             className="cursor-pointer transition-colors hover:text-accent-light"
           >
-            Términos y Condiciones
+            Terms & Conditions
           </a>
           <a
             href={LEGAL_ROUTES.cancellation}
@@ -117,7 +167,7 @@ export function Footer({
             }}
             className="cursor-pointer transition-colors hover:text-accent-light"
           >
-            Política de Cancelación
+            Cancellation Policy
           </a>
           {showAdminNavLink ? (
             <button
