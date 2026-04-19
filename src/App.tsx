@@ -13,6 +13,7 @@ import { Team } from "./components/landing/Team";
 import { WhyChooseUs } from "./components/landing/WhyChooseUs";
 import { Testimonials } from "./components/landing/Testimonials";
 import { Location } from "./components/landing/Location";
+import { BusinessHours } from "./components/landing/BusinessHours";
 import { Gallery } from "./components/landing/Gallery";
 import { QuickInquiry } from "./components/landing/QuickInquiry";
 import { ScrollToTop } from "./components/layout/ScrollToTop";
@@ -304,6 +305,7 @@ export default function App() {
         )}
         {siteConfig.features.showTestimonials && <Testimonials />}
         {siteConfig.features.showInquiry && <QuickInquiry />}
+        {siteConfig.features.showLocation && <BusinessHours />}
         {siteConfig.features.showLocation && <Location />}
       </main>
 
