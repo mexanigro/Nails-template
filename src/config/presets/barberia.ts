@@ -5,18 +5,18 @@ export const barberiaPreset: NichePreset = {
     type: "barberia",
     legalName: "ONYX & STEEL GROOMING LLC",
     address:
-      "123 Precision Way, Downtown Arts District, New York, NY 10012, Estados Unidos",
-    cancellationPolicy: "24 horas de antelación respecto al inicio de la cita",
+      "123 Precision Way, Downtown Arts District, New York, NY 10012, United States",
+    cancellationPolicy: "24 hours prior to the scheduled appointment start time",
   },
 
   brand: {
     name: "ONYX & STEEL",
     tagline: "The Modern Gentleman's Sanctuary",
     description:
-      "Barbería de alto nivel donde la artesanía tradicional se fusiona con la precisión contemporánea. Reserva tu experiencia de grooming premium.",
+      "A premier grooming destination where time-honored artistry meets contemporary precision. Book your exclusive grooming experience.",
     logoIconName: "Scissors",
     aiPersona:
-      "Eres un asistente virtual especializado en grooming de lujo para caballeros. Tu misión es orientar a los clientes con elegancia, responder sus preguntas de forma concisa y recomendar los servicios Onyx & Steel que mejor se adapten a su estilo.",
+      "You are a virtual specialist in luxury gentlemen's grooming. Your mission is to guide clients with elegance, answer their questions concisely, and recommend the Onyx & Steel services that best complement their personal style.",
   },
 
   hero: {
@@ -24,9 +24,9 @@ export const barberiaPreset: NichePreset = {
     titleHighlight: "CRAFTED",
     titleSuffix: "FOR THE MODERN GENTLEMAN",
     subtitle:
-      "Donde los maestros artesanos esculpen confianza en cada corte. Grooming elevado a la categoría de arte.",
-    ctaPrimary: "RESERVA TU SILLA",
-    ctaSecondary: "VER SERVICIOS",
+      "Where master artisans sculpt confidence into every cut. Grooming elevated to the discipline of fine craft.",
+    ctaPrimary: "RESERVE YOUR CHAIR",
+    ctaSecondary: "OUR SERVICES",
     backgroundImage:
       "https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&q=80&w=2000",
   },
@@ -62,41 +62,41 @@ export const barberiaPreset: NichePreset = {
   services: [
     {
       id: "haircut",
-      name: "Corte Clásico",
+      name: "Classic Haircut",
       description:
-        "Corte de precisión esculpido a la geometría de tu rostro. Tijeras japonesas, navaja de terminación y acabado con producto de alta gama.",
+        "A precision cut sculpted to the geometry of your face. Japanese shears, razor-line finish, and a luxury styling product to seal the look.",
       duration: 30,
       price: 45,
     },
     {
       id: "beard-sculpt",
-      name: "Escultura de Barba",
+      name: "Beard Sculpture",
       description:
-        "Perfilado milimétrico con navaja recta, delineado de contornos y bálsamo hidratante de argán. La barba que mereces.",
+        "Millimeter-perfect outlining with a straight razor, contour definition, and an argan-oil hydrating balm. The beard you've always deserved.",
       duration: 25,
       price: 35,
     },
     {
       id: "straight-shave",
-      name: "Afeitado con Navaja",
+      name: "Straight Razor Shave",
       description:
-        "Ritual de afeitado clásico: toalla caliente, crema artesanal de jabón de sándalo y navaja de acero inoxidable. Piel de acero pulido.",
+        "A classic shaving ritual: hot towel preparation, artisan sandalwood lather, and a stainless steel straight razor. Skin as smooth as polished steel.",
       duration: 35,
       price: 40,
     },
     {
       id: "color-treatment",
-      name: "Tinte & Matiz",
+      name: "Color & Tint",
       description:
-        "Cobertura de canas o color completo con pigmentos de lujo libres de amoniaco. Natural, duradero y de acabado fotográfico.",
+        "Grey blending or full-color coverage using ammonia-free luxury pigments. Natural, long-lasting, and camera-ready.",
       duration: 50,
       price: 65,
     },
     {
       id: "full-ritual",
-      name: "Ritual Completo",
+      name: "The Full Ritual",
       description:
-        "La experiencia Onyx & Steel al completo: corte de precisión, escultura de barba y tratamiento con toalla caliente y sérum capilar.",
+        "The complete Onyx & Steel experience: precision haircut, beard sculpture, hot towel treatment, and a revitalizing hair serum.",
       duration: 75,
       price: 90,
     },
@@ -107,15 +107,17 @@ export const barberiaPreset: NichePreset = {
       id: "alex",
       slug: "alex-reed",
       name: "Alex 'The Blade' Reed",
+      // Avatar: professional barber in black apron inside barbershop
       photoUrl:
-        "https://images.unsplash.com/photo-1598524322298-d7f9733c82ef?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1717700921740-a1440f3b89a4?auto=format&fit=crop&q=80&w=800",
       specialty: "Classic Fades & Tapers",
-      bio: "Con más de 12 años de oficio, Alex domina los fades de piel y las siluetas clásicas con una precisión que convierte cada corte en una firma personal.",
+      bio: "With over 12 years behind the chair, Alex commands the full spectrum of skin fades and classic silhouettes — a precision that transforms every cut into a personal signature.",
+      // Portfolio: finished haircut RESULTS only — no process shots, no capes
       portfolio: [
-        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1568339434343-2a640a1a9946?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1618049049816-43a00d5b0c3d?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1456327102063-fb5054efe647?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1578390432942-d323db577792?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
         instagram: "https://instagram.com/alexblade",
@@ -163,15 +165,17 @@ export const barberiaPreset: NichePreset = {
       id: "daniel",
       slug: "daniel-petrocelli",
       name: "Daniel Petrocelli",
+      // Avatar: urban barber with apron and tattoo on arm
       photoUrl:
-        "https://images.unsplash.com/photo-1599351431247-f13b29c4e1d9?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1723021073699-77f5442510a2?auto=format&fit=crop&q=80&w=800",
       specialty: "Beard Artistry & Grooming",
-      bio: "Daniel es un maestro del vello facial. Su dominio de la navaja recta y el contorneado de barba lo han convertido en el referente del afeitado de lujo en la ciudad.",
+      bio: "Daniel is a master of facial hair. His command of the straight razor and beard contouring has made him the city's foremost authority on luxury wet shaving.",
+      // Portfolio: finished beard RESULTS only — sculpted beards, clean lines
       portfolio: [
-        "https://images.unsplash.com/photo-1593702295094-172f3e098808?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1512690196236-724d90957dc3?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1657105052388-e839d5d0f395?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1659212165922-b1b64fc04ccf?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1674456483643-05448d24cd77?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1551810104-58185e8cfd0c?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
         instagram: "https://instagram.com/danielgrooming",
@@ -218,15 +222,17 @@ export const barberiaPreset: NichePreset = {
       id: "michael",
       slug: "michael-vane",
       name: "Michael Vane",
+      // Avatar: barber in black long sleeve shirt, barbershop setting
       photoUrl:
-        "https://images.unsplash.com/photo-1622286332618-f2803b1950d4?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1619233543112-fe382ff3693d?auto=format&fit=crop&q=80&w=800",
       specialty: "Scissor Work & Texture",
-      bio: "Michael fusiona técnicas europeas de tijera con trabajo de textura contemporáneo. El resultado: looks sin esfuerzo aparente que proyectan autoridad.",
+      bio: "Michael fuses European scissor techniques with contemporary texture work. The result: effortless-looking styles that project undeniable authority.",
+      // Portfolio: finished textured cut RESULTS only — no process shots
       portfolio: [
-        "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1503951458645-643d53efd90f?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1501612722-7940219c118d?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1622286332618-f2803b1950d4?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1587776535733-b4c80a99ef82?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1584864650621-95648f07518e?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1648742468740-6347e05c7faa?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1516646720587-727f6728837d?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
         instagram: "https://instagram.com/michaelvane",
@@ -276,145 +282,147 @@ export const barberiaPreset: NichePreset = {
     {
       name: "Marcus Thorne",
       title: "CEO, TechSolutions",
-      text: "La precisión es incomparable. Alex leyó la geometría de mi rostro antes de tomar la primera herramienta. Salí de la silla sintiéndome un hombre diferente.",
+      text: "The precision here is in a class of its own. Alex read the geometry of my face before picking up a single tool. I walked out of that chair feeling like a different man.",
       rating: 5,
     },
     {
       name: "Julian Vane",
-      title: "Arquitecto",
-      text: "La técnica de navaja recta de Daniel es una meditación. El afeitado más limpio y cercano que he tenido en veinte años. No iré a ningún otro sitio.",
+      title: "Architect",
+      text: "Daniel's straight razor technique is a form of meditation. The closest, cleanest shave I've had in two decades. I won't be going anywhere else.",
       rating: 5,
     },
     {
       name: "Elias Reed",
-      title: "Fotógrafo",
-      text: "Interior oscuro, energía enfocada, resultado de clase mundial. Así debe sentirse una barbería. Sin teatralidad, solo maestría pura.",
+      title: "Photographer",
+      text: "Dark interior, focused energy, world-class result. This is exactly what a barbershop should feel like. No theatrics — just pure mastery.",
       rating: 5,
     },
   ],
 
   // ─── Gallery ─────────────────────────────────────────────────────────────────
-  // 12 curated high-resolution barbershop images from Unsplash.
+  // 12 curated result-only shots: clean fades, textured styles, sculpted beards.
+  // Rule: NO process shots, NO scissors/clippers in frame, NO capes on clients.
   gallery: [
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1593702295094-172f3e098808?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1512690196236-724d90957dc3?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1599351431247-f13b29c4e1d9?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1622286332618-f2803b1950d4?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1503951458645-643d53efd90f?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1568339434343-2a640a1a9946?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1618049049816-43a00d5b0c3d?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1456327102063-fb5054efe647?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1578390432942-d323db577792?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1657105052388-e839d5d0f395?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1659212165922-b1b64fc04ccf?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1674456483643-05448d24cd77?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1551810104-58185e8cfd0c?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1587776535733-b4c80a99ef82?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1584864650621-95648f07518e?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1648742468740-6347e05c7faa?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1516646720587-727f6728837d?auto=format&fit=crop&q=80&w=1200",
   ],
 
   sections: {
     services: {
-      title: "Arte & Oficio",
-      subtitle: "Servicios Premium",
-      // CRITICAL: one image per service, in the same order as the services array.
-      // services[0] = Corte Clásico      → barber cutting hair
-      // services[1] = Escultura de Barba → barber trimming a beard
-      // services[2] = Afeitado con Navaja → straight razor shave
-      // services[3] = Tinte & Matiz       → hair color application
-      // services[4] = Ritual Completo     → full barbershop session
+      title: "Art & Craft",
+      subtitle: "Premium Services",
+      // ACTION shots — one per service, same order as services[].
+      // Rule: each image must show the barber actively performing that specific service.
+      // services[0] Classic Haircut       → barber in white shirt cutting client's hair
+      // services[1] Beard Sculpture       → barber detailing / sculpting a beard
+      // services[2] Straight Razor Shave  → straight-razor shave in progress
+      // services[3] Color & Tint          → barber applying hair color treatment
+      // services[4] The Full Ritual       → client receiving full barbershop session
       images: [
-        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1593702295094-172f3e098808?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1654097800183-574ba7368f74?auto=format&fit=crop&q=80&w=600",
       ],
     },
     team: {
-      title: "Maestros del Oficio // v1.0",
-      subtitle: "Los Artesanos",
+      title: "Masters of the Trade // v1.0",
+      subtitle: "The Artisans",
       description:
-        "Un equipo seleccionado a mano por su precisión técnica, visión escultórica y compromiso absoluto con la integridad de la silueta masculina moderna. Cada silla, un maestro.",
+        "Hand-selected for technical precision, sculptural vision, and an unwavering commitment to the integrity of the modern male silhouette. Every chair is occupied by a master.",
     },
     whyChooseUs: {
-      title: "El Estándar",
-      subtitle: "Por Qué Elegirnos",
+      title: "The Standard",
+      subtitle: "Why Choose Us",
       mainImage:
         "https://images.unsplash.com/photo-1512690196236-724d90957dc3?auto=format&fit=crop&q=80&w=1000",
-      badge: "10 Años\nDe Maestría",
+      badge: "10 Years\nOf Mastery",
       benefits: [
         {
           iconName: "ShieldCheck",
-          title: "Higiene Absoluta",
-          desc: "Esterilización de nivel médico de todos los instrumentos tras cada cliente. Tu seguridad es nuestra norma irrenunciable.",
+          title: "Absolute Hygiene",
+          desc: "Medical-grade sterilization of all instruments after every single client. Your safety is our non-negotiable standard.",
         },
         {
           iconName: "Clock",
-          title: "Puntualidad Suiza",
-          desc: "Respetamos tu agenda. Empezamos a la hora acordada, siempre. Sin listas de espera, sin excusas.",
+          title: "Swiss Punctuality",
+          desc: "We respect your schedule. We start on time, every time. No waiting lists, no excuses.",
         },
         {
           iconName: "Award",
-          title: "Artesanía Maestra",
-          desc: "Nuestro equipo supera formaciones rigurosas y certificaciones para dominar cada técnica y cada tipo de cabello.",
+          title: "Master Craftsmanship",
+          desc: "Our team undergoes rigorous training and certifications to master every technique and every hair type.",
         },
         {
           iconName: "Zap",
-          title: "Resultados Afilados",
-          desc: "La precisión no es un objetivo, es nuestra norma. No paramos hasta que cada línea es perfecta.",
+          title: "Sharp Results",
+          desc: "Precision is not a goal — it is our standard. We don't stop until every line is perfect.",
         },
       ],
     },
     testimonials: {
-      title: "Voces de Confianza",
-      subtitle: "Lo Que Dicen Nuestros Clientes",
+      title: "Voices of Trust",
+      subtitle: "What Our Clients Say",
     },
     gallery: {
-      title: "Maestría Visual",
-      subtitle: "El Portfolio",
+      title: "Visual Mastery",
+      subtitle: "The Portfolio",
     },
     location: {
-      title: "Visítanos",
-      subtitle: "Encuentra La Silla",
+      title: "Visit Us",
+      subtitle: "Find The Chair",
     },
     contact: {
-      title: "Contáctanos",
-      subtitle: "Envíanos Una Consulta",
+      title: "Get In Touch",
+      subtitle: "Send Us An Inquiry",
       description:
-        "¿Tienes una solicitud especial o alguna pregunta? Escríbenos y el equipo te responderá a la brevedad.",
+        "Have a special request or a question? Drop us a line and our team will respond promptly.",
     },
     booking: {
-      title: "Reservar Cita",
-      tagline: "La Experiencia del Santuario del Caballero Moderno",
+      title: "Book Appointment",
+      tagline: "The Modern Gentleman's Sanctuary Experience",
       steps: {
-        service: "Servicio",
-        staff: "Artesano",
-        datetime: "Horario",
-        details: "Confirmar",
-        payment: "Pago",
+        service: "Service",
+        staff: "Artisan",
+        datetime: "Schedule",
+        details: "Confirm",
+        payment: "Payment",
       },
       aiConsultant: {
-        title: "Inteligencia Neural",
-        subtitle: "¿Necesitas Precisión de Estilo?",
+        title: "Neural Intelligence",
+        subtitle: "Need Style Precision?",
         description:
-          "Consulta a nuestro especialista IA para que recomiende tu próxima misión de grooming.",
-        agentLabel: "Agente Consultor",
+          "Ask our AI specialist to recommend your next grooming mission.",
+        agentLabel: "Consulting Agent",
         placeholder:
-          "Describe tu visión (ej. 'Fade bajo con barba trabajada y raya marcada')...",
+          "Describe your vision (e.g. 'Low fade with a blended beard and a hard part')...",
       },
       success: {
-        title: "Éxito",
-        confirmed: "¡Confirmado!",
-        requestSaved: "¡Solicitud Guardada!",
-        cancelled: "Cancelado",
+        title: "Success",
+        confirmed: "Confirmed!",
+        requestSaved: "Request Saved!",
+        cancelled: "Cancelled",
       },
     },
     admin: {
       staff: {
-        title: "Personal Táctico",
-        scheduleTitle: "Ventana Operativa Semanal",
-        commitButton: "Guardar Horario",
-        enforcementTitle: "Protocolo de Control Temporal",
+        title: "Tactical Personnel",
+        scheduleTitle: "Weekly Operational Window",
+        commitButton: "Save Schedule",
+        enforcementTitle: "Temporal Enforcement Protocol",
         enforcementDesc:
-          "Los horarios del personal son aplicados estrictamente por el motor de reservas. Cualquier cambio en las ventanas semanales o días inactivos se propagará al instante al frontend, evitando asignaciones imposibles.",
+          "Staff schedules are strictly enforced by the booking engine. Any changes to weekly windows or inactive days will propagate instantly to the frontend, preventing impossible appointment allocations.",
       },
     },
   },
