@@ -91,6 +91,99 @@ export type Benefit = {
 
 export type BusinessNiche = "barberia" | "estetica" | "abogado";
 
+/**
+ * NichePreset — all fields that vary per business type.
+ * Each preset file in src/config/presets/ must satisfy this interface.
+ * The remaining fields (features, payment, notifications, adminEmail)
+ * live in the base config inside site.ts and never change between niches.
+ */
+export type NichePreset = {
+  business: {
+    type: BusinessNiche;
+    legalName: string;
+    address: string;
+    cancellationPolicy: string;
+  };
+  brand: {
+    name: string;
+    tagline: string;
+    description?: string;
+    logo?: string;
+    logoIconName?: string;
+    aiPersona?: string;
+  };
+  hero: {
+    titlePrefix: string;
+    titleHighlight: string;
+    titleSuffix: string;
+    subtitle: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    backgroundImage: string;
+  };
+  contact: {
+    address: {
+      street: string;
+      district: string;
+      cityStateZip: string;
+    };
+    phone: string;
+    email: string;
+    social: SocialLinks;
+  };
+  hours: BusinessHours;
+  services: Service[];
+  staff: StaffMember[];
+  testimonials: Testimonial[];
+  gallery: string[];
+  sections: {
+    services: SectionHeader & { images: string[] };
+    team: SectionHeader & { description: string };
+    whyChooseUs: SectionHeader & {
+      benefits: Benefit[];
+      mainImage: string;
+      badge: string;
+    };
+    testimonials: SectionHeader;
+    gallery: SectionHeader;
+    location: SectionHeader;
+    contact: SectionHeader & { description: string };
+    booking: {
+      title: string;
+      tagline: string;
+      steps: {
+        service: string;
+        staff: string;
+        datetime: string;
+        details: string;
+        payment: string;
+      };
+      aiConsultant: {
+        title: string;
+        subtitle: string;
+        description: string;
+        agentLabel: string;
+        placeholder: string;
+      };
+      success: {
+        title: string;
+        confirmed: string;
+        requestSaved: string;
+        cancelled: string;
+      };
+    };
+    admin: {
+      staff: {
+        title: string;
+        scheduleTitle: string;
+        commitButton: string;
+        enforcementTitle: string;
+        enforcementDesc: string;
+      };
+    };
+  };
+};
+
 /** Rutas del shell público (landing, galería y páginas legales con URL). */
 export type PublicShellPage =
   | "landing"
