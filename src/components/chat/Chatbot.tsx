@@ -88,7 +88,7 @@ export function Chatbot() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-24 right-6 z-50 w-14 h-14 bg-accent hover:bg-accent-light text-white rounded-full flex items-center justify-center shadow-xl shadow-accent/35 transition-all active:scale-95 group"
+            className="group fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-accent/35 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 active:scale-95"
           >
             <MessageSquare size={24} className="group-hover:scale-110 transition-transform" />
           </motion.button>
@@ -135,7 +135,7 @@ export function Chatbot() {
                 >
                   <div className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-1",
-                    msg.role === "user" ? "bg-accent text-white" : "bg-zinc-100 dark:bg-zinc-800 transition-colors duration-300 text-accent-light"
+                    msg.role === "user" ? "bg-primary text-primary-foreground" : "bg-zinc-100 text-accent-light transition-colors duration-300 dark:bg-zinc-800"
                   )}>
                     {msg.role === "user" ? <User size={14} /> : <Bot size={14} />}
                   </div>
@@ -143,7 +143,7 @@ export function Chatbot() {
                   <div className={cn(
                     "rounded-2xl px-5 py-3.5 text-sm leading-relaxed",
                     msg.role === "user" 
-                      ? "bg-accent text-white rounded-tr-sm" 
+                      ? "rounded-tr-sm bg-primary text-primary-foreground" 
                       : "bg-white dark:bg-zinc-900 transition-colors duration-300 text-zinc-600 dark:text-zinc-300 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 rounded-tl-sm [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:ml-4 [&_ul]:mb-2 [&_strong]:text-accent-light"
                   )}>
                     {msg.role === "model" ? (
@@ -184,7 +184,7 @@ export function Chatbot() {
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2 w-10 h-10 bg-accent hover:bg-accent-light text-white rounded-full flex items-center justify-center disabled:opacity-50 disabled:bg-zinc-100 dark:disabled:bg-zinc-800 disabled:text-zinc-500 transition-all"
+                  className="absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:bg-secondary disabled:text-muted-foreground disabled:opacity-50"
                   aria-label="Send Message"
                 >
                   <Send size={16} className={input.trim() && !isLoading ? "ml-0.5" : ""} />

@@ -21,6 +21,10 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /** Light nav copy on transparent bar over the dark Hero overlay */
+  const overlayNav =
+    !scrolled && currentPage === "landing" && siteConfig.features.showHero;
+
   const navLinks = [
     { name: "Services", href: "#services", type: "anchor", enabled: siteConfig.features.showServices },
     { name: "Team", href: "#team", type: "anchor", enabled: siteConfig.features.showTeam },
@@ -43,7 +47,9 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
     <nav
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4",
-        scrolled ? "bg-white/90 dark:bg-surface-dark/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-200 dark:border-zinc-900 transition-colors duration-300" : "bg-transparent"
+        scrolled
+          ? "border-b border-border bg-white/90 backdrop-blur-md dark:bg-background/85"
+          : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -55,7 +61,14 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
           <div className="w-10 h-10 bg-accent-light rounded-lg flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform">
             <BrandIcon className="text-zinc-950" size={24} />
           </div>
-          <span className="text-xl font-bold tracking-tighter text-zinc-900 dark:text-zinc-100 transition-colors duration-300 uppercase">
+          <span
+            className={cn(
+              "text-xl font-bold tracking-tighter uppercase transition-colors duration-300",
+              overlayNav
+                ? "text-white drop-shadow-sm"
+                : "text-zinc-900 dark:text-zinc-100"
+            )}
+          >
              {siteConfig.brand.name}
           </span>
         </a>
@@ -67,7 +80,12 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold text-zinc-600 dark:text-zinc-500 dark:text-zinc-400 transition-colors duration-300 hover:text-accent-light transition-colors uppercase tracking-widest"
+                className={cn(
+                  "text-sm font-semibold uppercase tracking-widest transition-colors duration-300 hover:text-accent-light",
+                  overlayNav
+                    ? "text-white/85 hover:text-accent-light"
+                    : "text-zinc-600 dark:text-zinc-400"
+                )}
               >
                 {link.name}
               </a>
@@ -86,8 +104,12 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
                   setIsOpen(false);
                 }}
                 className={cn(
-                  "text-sm font-semibold transition-colors uppercase tracking-widest",
-                  currentPage === "gallery" && link.name === "Gallery" ? "text-accent-light" : "text-zinc-500 dark:text-zinc-400 transition-colors duration-300 hover:text-accent-light"
+                  "text-sm font-semibold uppercase tracking-widest transition-colors duration-300 hover:text-accent-light",
+                  currentPage === "gallery" && link.name === "Gallery"
+                    ? "text-accent-light"
+                    : overlayNav
+                      ? "text-white/85"
+                      : "text-zinc-500 dark:text-zinc-400"
                 )}
               >
                 {link.name}
@@ -97,7 +119,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
           {siteConfig.features.showBooking && (
             <button
               onClick={onBookClick}
-              className="flex items-center gap-2 bg-accent hover:bg-accent-light text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/35 active:scale-95"
+              className="flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-primary-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 hover:shadow-xl hover:shadow-accent/35 active:scale-95"
             >
               <Calendar size={18} />
               <span>BOOK NOW</span>
@@ -109,7 +131,10 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
         <div className="md:hidden flex items-center gap-3">
           <ThemeToggle />
           <button
-            className="text-zinc-900 dark:text-zinc-100 transition-colors duration-300 p-2"
+            className={cn(
+              "p-2 transition-colors duration-300",
+              overlayNav ? "text-white" : "text-zinc-900 dark:text-zinc-100"
+            )}
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -124,7 +149,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white dark:bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-200 dark:border-zinc-900 transition-colors duration-300 p-6 md:hidden shadow-2xl transition-colors"
+            className="absolute top-full left-0 w-full border-b border-border bg-background p-6 shadow-elevated md:hidden transition-colors duration-300"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -166,7 +191,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
                     onBookClick();
                     setIsOpen(false);
                   }}
-                  className="w-full flex items-center justify-center gap-2 bg-accent text-white py-4 rounded-xl text-lg font-bold"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-primary py-4 text-lg font-bold text-primary-foreground transition-colors duration-300 hover:bg-accent-light hover:text-zinc-950"
                 >
                   <Calendar size={20} />
                   <span>BOOK APPOINTMENT</span>

@@ -8,11 +8,11 @@ export function Testimonials() {
   const { testimonials: sectionConfig } = sections;
 
   return (
-    <section id="testimonials" className="py-24 bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 px-6">
+    <section id="testimonials" className="bg-background px-6 py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-accent-light font-bold uppercase tracking-[0.3em] text-xs mb-4">{sectionConfig.title}</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-zinc-950 dark:text-white uppercase tracking-tighter">{sectionConfig.subtitle}</h3>
+          <h3 className="text-4xl font-black uppercase tracking-tighter text-foreground md:text-5xl">{sectionConfig.subtitle}</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -23,9 +23,9 @@ export function Testimonials() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-10 bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 rounded-[2.5rem] relative"
+              className="relative rounded-[2.5rem] border border-border bg-card p-10 shadow-elevated transition-colors duration-300"
             >
-              <Quote className="absolute top-8 right-8 text-zinc-800" size={60} />
+              <Quote className="absolute right-8 top-8 text-border dark:text-white/15" size={60} />
               
               <div className="flex gap-1 mb-6">
                 {[...Array(review.rating)].map((_, j) => (
@@ -33,12 +33,12 @@ export function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-zinc-600 dark:text-zinc-300 transition-colors duration-300 text-lg mb-8 leading-relaxed italic">
+              <p className="mb-8 text-lg italic leading-relaxed text-muted-foreground transition-colors duration-300">
                 "{review.text}"
               </p>
 
               <div>
-                <h4 className="text-zinc-950 dark:text-white font-bold text-lg">{review.name}</h4>
+                <h4 className="text-lg font-bold text-card-foreground">{review.name}</h4>
                 <p className="text-zinc-600 dark:text-zinc-300 transition-colors duration-300 text-xs uppercase tracking-widest mt-1">{review.title}</p>
               </div>
             </motion.div>

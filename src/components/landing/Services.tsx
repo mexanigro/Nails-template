@@ -9,7 +9,7 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
   const { services: sectionConfig } = sections;
 
   return (
-    <section id="services" className="py-24 bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 px-6">
+    <section id="services" className="bg-background px-6 py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <motion.h2 
@@ -25,7 +25,7 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black text-zinc-950 dark:text-white uppercase tracking-tighter"
+            className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-foreground"
           >
             {sectionConfig.subtitle}
           </motion.h3>
@@ -40,7 +40,7 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={cn(
-                "group relative bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 rounded-3xl overflow-hidden hover:border-accent-light/50 transition-all flex flex-col sm:flex-row",
+                "group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-elevated transition-all duration-300 hover:border-accent-light/50 sm:flex-row",
                 siteConfig.features.showBooking && "cursor-pointer"
               )}
               onClick={siteConfig.features.showBooking ? onBookClick : undefined}
@@ -61,15 +61,15 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
                   </div>
                 )}
 
-                <h4 className="text-2xl font-black text-zinc-950 dark:text-white mb-3 tracking-tight group-hover:text-accent-light transition-colors">
+                <h4 className="mb-3 text-2xl font-black tracking-tight text-card-foreground transition-colors group-hover:text-accent-light">
                   {service.name}
                 </h4>
-                <p className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 text-sm mb-8 leading-relaxed max-w-sm">
+                <p className="mb-8 max-w-sm text-sm leading-relaxed text-muted-foreground transition-colors duration-300">
                   {service.description}
                 </p>
 
                 <div className="flex items-center gap-6 mt-auto">
-                  <div className="flex items-center gap-2 text-zinc-950 dark:text-white font-bold bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
+                  <div className="flex items-center gap-2 rounded-xl border border-border bg-secondary px-4 py-2 font-bold text-secondary-foreground transition-colors duration-300">
                     <DollarSign size={16} className="text-accent-light" />
                     <span>{service.price}</span>
                   </div>

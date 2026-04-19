@@ -9,7 +9,7 @@ export function Team({ onBookClick }: { onBookClick: () => void }) {
   const { team: sectionConfig } = sections;
 
   return (
-    <section id="team" className="py-32 bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 px-6 relative overflow-hidden">
+    <section id="team" className="relative overflow-hidden bg-background px-6 py-32 transition-colors duration-300">
       {/* Structural Background Accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-zinc-900 via-transparent to-transparent opacity-30" />
       <div className="absolute top-1/4 left-0 w-full h-px bg-white dark:bg-zinc-900 transition-colors duration-300 opacity-20" />
@@ -36,7 +36,7 @@ export function Team({ onBookClick }: { onBookClick: () => void }) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-8xl font-black text-zinc-950 dark:text-white uppercase tracking-tighter leading-[0.85]"
+              className="text-5xl font-black uppercase leading-[0.85] tracking-tighter text-foreground md:text-8xl"
             >
               {sectionConfig.subtitle.split(' ').map((word, i) => (
                 <React.Fragment key={i}>
@@ -57,14 +57,14 @@ export function Team({ onBookClick }: { onBookClick: () => void }) {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 text-sm leading-relaxed border-l border-zinc-200 dark:border-zinc-900 transition-colors duration-300 pl-6"
+                className="border-l border-border pl-6 text-sm leading-relaxed text-muted-foreground transition-colors duration-300"
               >
                 {sectionConfig.description}
               </motion.p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-900/50 border border-zinc-200 dark:border-zinc-900 transition-colors duration-300">
+        <div className="grid grid-cols-1 gap-px rounded-3xl border border-border bg-border shadow-elevated md:grid-cols-3">
           {siteConfig.staff.map((member, index) => (
             <motion.div
               key={member.id}
@@ -73,7 +73,7 @@ export function Team({ onBookClick }: { onBookClick: () => void }) {
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
               className={cn(
-                "group relative bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 p-8 hover:bg-zinc-900/40 transition-colors duration-500",
+                "group relative bg-background p-8 transition-colors duration-500 hover:bg-zinc-900/40 dark:hover:bg-zinc-900/35",
                 siteConfig.features.showBooking && "cursor-pointer"
               )}
               onClick={siteConfig.features.showBooking ? onBookClick : undefined}
@@ -97,7 +97,7 @@ export function Team({ onBookClick }: { onBookClick: () => void }) {
                 </div>
                 
                 {/* ID Tag overlay */}
-                <div className="absolute -bottom-4 -right-4 bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-3 z-20 group-hover:border-accent-light/50 transition-colors shadow-2xl">
+                <div className="absolute -bottom-4 -right-4 z-20 border border-border bg-card p-3 shadow-elevated transition-colors duration-300 group-hover:border-accent-light/50">
                    <p className="text-[8px] font-black text-zinc-500 uppercase mb-1">Index ID</p>
                    <p className="font-mono text-[10px] text-accent-light font-bold">LEGEND_{member.id.toUpperCase()}_0{index + 1}</p>
                 </div>
@@ -105,7 +105,7 @@ export function Team({ onBookClick }: { onBookClick: () => void }) {
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                   <h4 className="text-2xl font-black text-zinc-950 dark:text-white uppercase tracking-tight group-hover:text-accent-light transition-colors">
+                   <h4 className="text-2xl font-black uppercase tracking-tight text-foreground transition-colors group-hover:text-accent-light">
                      {member.name}
                    </h4>
                    <ExternalLink size={14} className="text-zinc-700 group-hover:text-accent-light transition-colors" />
@@ -124,7 +124,7 @@ export function Team({ onBookClick }: { onBookClick: () => void }) {
                   {member.bio}
                 </p>
 
-                <div className="pt-6 flex items-center justify-between border-t border-zinc-200 dark:border-zinc-900 transition-colors duration-300 group-hover:border-zinc-200 dark:border-zinc-800 transition-colors duration-300 transition-colors">
+                <div className="flex items-center justify-between border-t border-border pt-6 transition-colors duration-300 group-hover:border-border">
                    <div className="flex gap-4">
                       {member.social?.instagram && (
                         <a href={member.social.instagram} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-zinc-700 hover:text-accent-light transition-colors">

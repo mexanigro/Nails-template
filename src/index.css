@@ -3,25 +3,82 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Brand + semantic tokens. Change --brand-accent* to rebrand;
+ * --primary-foreground stays light for readable CTAs on saturated brand hues.
+ */
+:root {
+  --brand-accent: #d97706;
+  --brand-accent-light: #f59e0b;
+  --brand-surface-dark: #09090b;
+
+  --background: #fafafa;
+  --foreground: #09090b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --border: #e4e4e7;
+  --primary: var(--brand-accent);
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+}
+
+.dark {
+  --background: var(--brand-surface-dark);
+  --foreground: #fafafa;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --card: #18181b;
+  --card-foreground: #fafafa;
+  --border: #27272a;
+  --primary: var(--brand-accent);
+  --primary-foreground: #ffffff;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", serif;
 
-  /*
-   * Universal theme tokens (Master Template).
-   * Change these HEX values to rebrand the entire UI.
-   */
-  --color-accent: #d97706;
-  --color-accent-light: #f59e0b;
-  --color-surface-dark: #09090b;
+  --color-accent: var(--brand-accent);
+  --color-accent-light: var(--brand-accent-light);
+  --color-surface-dark: var(--brand-surface-dark);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
 }
 
 @layer base {
   html, body {
-    @apply bg-zinc-50 text-zinc-950 dark:bg-surface-dark dark:text-zinc-100 transition-colors duration-300;
+    @apply bg-background text-foreground antialiased transition-colors duration-300;
   }
   html {
     scroll-behavior: smooth;
   }
 }
 
+/* Elevated surfaces: soft depth in light, subtle depth + hairline highlight in dark */
+@layer utilities {
+  .shadow-elevated {
+    box-shadow:
+      0 10px 40px -12px rgb(15 23 42 / 0.08),
+      0 4px 16px -4px rgb(15 23 42 / 0.06);
+  }
+  .dark .shadow-elevated {
+    box-shadow:
+      0 18px 48px -16px rgb(0 0 0 / 0.55),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.04);
+  }
+}

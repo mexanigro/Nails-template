@@ -8,7 +8,7 @@ export function WhyChooseUs() {
   const { whyChooseUs: sectionConfig } = sections;
 
   return (
-    <section id="why-choose-us" className="py-24 bg-white dark:bg-zinc-900 transition-colors duration-300 px-6">
+    <section id="why-choose-us" className="bg-card px-6 py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="relative">
@@ -16,7 +16,7 @@ export function WhyChooseUs() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="aspect-square rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-colors duration-300"
+              className="aspect-square overflow-hidden rounded-3xl border border-border transition-colors duration-300"
             >
               <img
                 src={sectionConfig.mainImage}
@@ -24,9 +24,9 @@ export function WhyChooseUs() {
                 alt="Operational Standard"
               />
             </motion.div>
-            <div className="absolute -bottom-10 -right-10 hidden md:block w-64 p-8 bg-accent-light rounded-3xl shadow-2xl rotate-6 hover:rotate-0 transition-transform duration-500">
-               <Icons.Star className="text-zinc-950 mb-4" size={40} fill="currentColor" />
-               <h4 className="text-2xl font-black text-zinc-950 uppercase leading-tight whitespace-pre-line">
+            <div className="absolute -bottom-10 -right-10 hidden w-64 rotate-6 rounded-3xl bg-accent-light p-8 shadow-elevated md:block hover:rotate-0 transition-transform duration-500">
+               <Icons.Star className="mb-4 text-zinc-950" size={40} fill="currentColor" />
+               <h4 className="whitespace-pre-line text-2xl font-black uppercase leading-tight text-zinc-950">
                   {sectionConfig.badge}
                </h4>
             </div>
@@ -35,7 +35,7 @@ export function WhyChooseUs() {
           <div className="space-y-12">
             <div>
               <h2 className="text-accent-light font-bold uppercase tracking-[0.3em] text-xs mb-4">{sectionConfig.title}</h2>
-              <h3 className="text-4xl md:text-6xl font-black text-zinc-950 dark:text-white uppercase tracking-tighter">{sectionConfig.subtitle}</h3>
+              <h3 className="text-4xl font-black uppercase tracking-tighter text-card-foreground md:text-6xl">{sectionConfig.subtitle}</h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">

@@ -79,7 +79,7 @@ export default function App() {
 
   if (page === "gallery" && siteConfig.features.showGallery) {
     return (
-      <div className="min-h-screen transition-colors duration-300">
+      <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
         <Navbar onBookClick={handleBookNow} onPageChange={setPage} currentPage={page} />
         <GalleryPage onBack={() => setPage("landing")} />
         <Footer onAdminClick={() => setPage("admin")} onPolicyClick={setActivePolicy} onPageChange={setPage} />
@@ -92,14 +92,14 @@ export default function App() {
                  initial={{ opacity: 0 }}
                  animate={{ opacity: 1 }}
                  exit={{ opacity: 0 }}
-                 className="absolute inset-0 bg-white/80 dark:bg-black/80 backdrop-blur-md transition-colors"
+                 className="absolute inset-0 bg-white/80 backdrop-blur-md transition-colors duration-300 dark:bg-black/80"
                  onClick={() => setShowBooking(false)}
                />
                <motion.div 
                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
                  animate={{ opacity: 1, scale: 1, y: 0 }}
                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                 className="relative bg-white dark:bg-zinc-900 w-full max-w-lg rounded-[32px] p-6 md:p-10 border border-zinc-200 dark:border-zinc-800 text-zinc-950 dark:text-white shadow-2xl transition-colors"
+                 className="relative w-full max-w-lg rounded-[32px] border border-border bg-card p-6 text-card-foreground shadow-elevated transition-colors duration-300 md:p-10"
                >
                   <BookingWizard onClose={() => setShowBooking(false)} />
                </motion.div>
@@ -111,7 +111,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen selection:bg-accent-light selection:text-zinc-950 font-sans transition-colors duration-300">
+    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-accent-light selection:text-zinc-950 transition-colors duration-300">
       <Navbar onBookClick={handleBookNow} onPageChange={setPage} currentPage={page} />
       
       <main>
@@ -137,14 +137,14 @@ export default function App() {
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
                exit={{ opacity: 0 }}
-               className="absolute inset-0 bg-white/80 dark:bg-black/80 backdrop-blur-md transition-colors"
+               className="absolute inset-0 bg-white/80 backdrop-blur-md transition-colors duration-300 dark:bg-black/80"
                onClick={() => setShowBooking(false)}
              />
              <motion.div 
                initial={{ opacity: 0, scale: 0.9, y: 20 }}
                animate={{ opacity: 1, scale: 1, y: 0 }}
                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-               className="relative bg-white dark:bg-zinc-900 w-full max-w-lg rounded-[32px] p-6 md:p-10 border border-zinc-200 dark:border-zinc-800 text-zinc-950 dark:text-white shadow-2xl transition-colors"
+               className="relative w-full max-w-lg rounded-[32px] border border-border bg-card p-6 text-card-foreground shadow-elevated transition-colors duration-300 md:p-10"
              >
                 <BookingWizard onClose={() => setShowBooking(false)} />
              </motion.div>

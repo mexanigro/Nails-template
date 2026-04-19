@@ -16,7 +16,7 @@ export function Footer({
   const BrandIcon = (Icons as any)[brand.logoIconName || "Scissors"] || Icons.Scissors;
 
   return (
-    <footer className="bg-zinc-100 dark:bg-black py-20 px-6 border-t border-zinc-200 dark:border-zinc-900 transition-colors duration-300">
+    <footer className="border-t border-border bg-muted py-20 px-6 transition-colors duration-300 dark:bg-black">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="space-y-6">
           <div className="flex items-center gap-2">

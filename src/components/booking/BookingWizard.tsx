@@ -330,7 +330,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                          <button 
                            onClick={runAiConsultation}
                            disabled={isConsulting || !aiQuery.trim()}
-                           className="p-3 bg-accent text-white rounded-xl hover:bg-accent-light disabled:bg-zinc-100 dark:disabled:bg-zinc-800 transition-all flex items-center justify-center min-w-[44px]"
+                           className="flex min-w-[44px] items-center justify-center rounded-xl bg-primary p-3 text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:bg-secondary disabled:text-muted-foreground"
                          >
                             {isConsulting ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Send size={18} />}
                          </button>
@@ -577,7 +577,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               <button
                 disabled={!customerInfo.name || !customerInfo.email || !customerInfo.phone || isSubmitting}
                 onClick={handleConfirm}
-                className="w-full bg-accent hover:bg-accent-light disabled:bg-zinc-100 dark:disabled:bg-zinc-800 disabled:text-zinc-500 dark:disabled:text-zinc-400 p-5 rounded-2xl font-black uppercase tracking-widest transition-all mt-4 flex items-center justify-center gap-3"
+                className="mt-4 flex w-full items-center justify-center gap-3 rounded-2xl bg-primary p-5 font-black uppercase tracking-widest text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:bg-secondary disabled:text-muted-foreground"
               >
                 {isSubmitting ? (
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />

@@ -9,11 +9,11 @@ export function Gallery({ onViewFull }: { onViewFull: () => void }) {
   const previewImages = gallery.slice(0, 6);
 
   return (
-    <section id="gallery" className="py-24 bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 px-6">
+    <section id="gallery" className="bg-background px-6 py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto text-center">
         <div className="text-center mb-16">
           <h2 className="text-accent-light font-bold uppercase tracking-[0.3em] text-xs mb-4">{sectionConfig.title}</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-zinc-950 dark:text-white uppercase tracking-tighter">{sectionConfig.subtitle}</h3>
+          <h3 className="text-4xl font-black uppercase tracking-tighter text-foreground md:text-5xl">{sectionConfig.subtitle}</h3>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -24,7 +24,7 @@ export function Gallery({ onViewFull }: { onViewFull: () => void }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group aspect-[4/3] rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-900 transition-colors duration-300"
+              className="group aspect-[4/3] overflow-hidden rounded-3xl border border-border shadow-sm transition-colors duration-300 dark:shadow-none"
             >
               <img
                 src={src}
@@ -42,7 +42,7 @@ export function Gallery({ onViewFull }: { onViewFull: () => void }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           onClick={onViewFull}
-          className="group relative inline-flex items-center gap-4 bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 hover:border-accent-light hover:bg-zinc-100 dark:bg-zinc-800 transition-colors duration-300 text-zinc-950 dark:text-white px-10 py-5 rounded-2xl font-black uppercase tracking-[0.2em] transition-all overflow-hidden"
+          className="group relative inline-flex items-center gap-4 overflow-hidden rounded-2xl border border-border bg-secondary px-10 py-5 font-black uppercase tracking-[0.2em] text-secondary-foreground shadow-elevated transition-all duration-300 hover:border-accent-light hover:bg-muted"
         >
           <LayoutGrid size={20} className="text-accent-light group-hover:scale-125 transition-transform" />
           <span>View Full Manifest</span>
