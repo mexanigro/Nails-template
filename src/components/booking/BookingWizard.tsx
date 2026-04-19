@@ -12,6 +12,14 @@ import { Sparkles, Send } from "lucide-react";
 
 type Step = "service" | "staff" | "datetime" | "details" | "payment" | "success";
 
+/** Visual-only field & surface tokens — no logic impact */
+const fieldWithIcon =
+  "w-full rounded-2xl border border-border bg-muted/50 py-4 pl-12 pr-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-muted/30";
+const fieldAi =
+  "flex-1 rounded-xl border border-border bg-muted/50 px-3 py-3 text-xs text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-muted/30";
+const btnPrimaryFull =
+  "mt-4 flex w-full items-center justify-center gap-3 rounded-2xl bg-primary p-5 font-black uppercase tracking-widest text-primary-foreground shadow-md transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:cursor-not-allowed disabled:bg-secondary disabled:text-muted-foreground";
+
 export function BookingWizard({ onClose }: { onClose: () => void }) {
   const { services: SERVICES, staff: STAFF, brand, payment: PAYMENT_CONFIG, sections } = siteConfig;
   const { booking: config } = sections;
@@ -242,20 +250,20 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
              <React.Fragment key={s.key}>
                 <div className="flex flex-col items-center gap-2 min-w-[60px]">
                   <div className={cn(
-                    "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border-2",
-                    isActive ? "bg-accent-light border-accent-light text-zinc-950 scale-110" : 
-                    isDone ? "bg-zinc-100 dark:bg-zinc-800 transition-colors duration-300 border-zinc-200 dark:border-zinc-800 transition-colors duration-300 text-accent-light" :
-                    "bg-white dark:bg-zinc-900 transition-colors duration-300 border-zinc-200 dark:border-zinc-800 transition-colors duration-300 text-zinc-500 dark:text-zinc-400 transition-colors duration-300"
+                    "flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all duration-300",
+                    isActive ? "scale-110 border-accent-light bg-accent-light text-zinc-950" :
+                    isDone ? "border-primary/40 bg-muted text-primary" :
+                    "border-border bg-card text-muted-foreground"
                   )}>
                     <Icon size={18} />
                   </div>
                   <span className={cn(
                     "text-[10px] font-black uppercase tracking-tighter",
-                    isActive ? "text-accent-light" : "text-zinc-500 dark:text-zinc-400 transition-colors duration-300"
+                    isActive ? "text-accent-light" : "text-muted-foreground"
                   )}>{s.label}</span>
                 </div>
                 {idx < steps.length - 1 && (
-                  <div className="flex-1 h-[2px] bg-zinc-100 dark:bg-zinc-800 transition-colors duration-300 mx-4 min-w-[20px]" />
+                  <div className="mx-4 min-h-[2px] min-w-[20px] flex-1 bg-border" />
                 )}
              </React.Fragment>
           );
@@ -266,12 +274,12 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="flex flex-col h-full max-h-[90vh]">
-      <div className="flex items-center justify-between mb-6">
+      <div className="mb-6 flex items-center justify-between">
         <div>
-           <h2 className="text-2xl font-black uppercase tracking-tight text-zinc-950 dark:text-white">{config.title}</h2>
-           <p className="text-zinc-600 dark:text-zinc-300 transition-colors duration-300 text-xs uppercase tracking-widest font-bold">{config.tagline}</p>
+           <h2 className="text-2xl font-black uppercase tracking-tight text-foreground">{config.title}</h2>
+           <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{config.tagline}</p>
         </div>
-        <button onClick={handleClose} className="p-2 hover:bg-zinc-100 dark:bg-zinc-800 transition-colors duration-300 rounded-full transition-colors text-zinc-500 dark:text-zinc-400 transition-colors duration-300">
+        <button type="button" onClick={handleClose} className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
           <X size={24} />
         </button>
       </div>
@@ -288,10 +296,10 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               key="service"
               className="space-y-4"
             >
-              <h3 className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 font-bold uppercase text-[10px] tracking-[0.2em] mb-4">Choose a service</h3>
+              <h3 className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Choose a service</h3>
               
               {/* AI Consultant Trigger */}
-              <div className="bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 border border-zinc-200 dark:border-zinc-900 transition-colors duration-300 rounded-3xl p-6 mb-6 group relative overflow-hidden transition-all hover:border-accent-light/50">
+              <div className="group relative mb-6 overflow-hidden rounded-3xl border border-border bg-muted/40 p-6 backdrop-blur-sm transition-all hover:border-accent-light/40">
                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                     <Sparkles size={60} />
                  </div>
@@ -300,12 +308,13 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                    <div className="flex items-center justify-between gap-4">
                       <div>
                          <p className="text-accent-light text-[9px] font-black uppercase tracking-[0.2em] mb-1">{config.aiConsultant.title}</p>
-                         <h4 className="text-zinc-950 dark:text-white text-sm font-black uppercase tracking-tight">{config.aiConsultant.subtitle}</h4>
-                         <p className="text-zinc-500 text-[10px] mt-1">{config.aiConsultant.description}</p>
+                         <h4 className="text-sm font-black uppercase tracking-tight text-foreground">{config.aiConsultant.subtitle}</h4>
+                         <p className="mt-1 text-[10px] text-muted-foreground">{config.aiConsultant.description}</p>
                       </div>
                       <button 
+                        type="button"
                         onClick={() => setShowAiConsult(true)}
-                        className="p-3 bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 rounded-xl text-accent-light hover:bg-accent-light hover:text-zinc-950 transition-all shadow-xl active:scale-90"
+                        className="rounded-xl border border-border bg-card p-3 text-accent-light shadow-sm transition-all hover:bg-accent-light hover:text-zinc-950 active:scale-95"
                       >
                          <Sparkles size={20} />
                       </button>
@@ -314,7 +323,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                    <div className="space-y-4 relative z-10">
                       <div className="flex items-center justify-between">
                          <p className="text-accent-light text-[9px] font-black uppercase tracking-[0.2em]">{config.aiConsultant.agentLabel}</p>
-                         <button onClick={() => setShowAiConsult(false)} className="text-zinc-600 hover:text-white transition-colors">
+                         <button type="button" onClick={() => setShowAiConsult(false)} className="text-muted-foreground transition-colors hover:text-foreground">
                             <X size={14} />
                          </button>
                       </div>
@@ -325,23 +334,24 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                            onChange={(e) => setAiQuery(e.target.value)}
                            onKeyDown={(e) => e.key === 'Enter' && runAiConsultation()}
                            placeholder={config.aiConsultant.placeholder}
-                           className="flex-1 bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-3 rounded-xl text-xs text-zinc-950 dark:text-white outline-none focus:border-accent-light transition-all"
+                           className={fieldAi}
                          />
                          <button 
+                           type="button"
                            onClick={runAiConsultation}
                            disabled={isConsulting || !aiQuery.trim()}
-                           className="flex min-w-[44px] items-center justify-center rounded-xl bg-primary p-3 text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:bg-secondary disabled:text-muted-foreground"
+                           className="flex min-w-[44px] items-center justify-center rounded-xl bg-primary p-3 text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:cursor-not-allowed disabled:bg-secondary disabled:text-muted-foreground"
                          >
-                            {isConsulting ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Send size={18} />}
+                            {isConsulting ? <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground" /> : <Send size={18} />}
                          </button>
                       </div>
                       {aiAdvice && (
                         <motion.div 
                           initial={{ opacity: 0, y: 5 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="p-4 bg-zinc-900/50 rounded-xl border border-zinc-800/50"
+                          className="rounded-xl border border-border bg-card/95 p-4 backdrop-blur-sm"
                         >
-                           <p className="text-xs text-zinc-600 dark:text-zinc-300 transition-colors duration-300 italic leading-relaxed">"{aiAdvice}"</p>
+                           <p className="text-xs italic leading-relaxed text-muted-foreground">"{aiAdvice}"</p>
                            {selectedService && (
                              <div className="mt-2 flex items-center gap-2">
                                 <CheckCircle size={12} className="text-green-500" />
@@ -357,15 +367,16 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               <div className="grid gap-3">
                 {SERVICES.map((s) => (
                   <button
+                    type="button"
                     key={s.id}
                     onClick={() => { setSelectedService(s); setStep("staff"); }}
-                    className="flex items-center justify-between p-5 bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 rounded-2xl hover:border-accent-light transition-all text-left group"
+                    className="group flex items-center justify-between rounded-2xl border border-border bg-card p-5 text-left shadow-sm transition-all hover:border-accent-light/50"
                   >
                     <div>
-                      <h4 className="font-bold text-zinc-950 dark:text-white group-hover:text-accent-light transition-colors">{s.name}</h4>
-                      <p className="text-zinc-600 dark:text-zinc-300 transition-colors duration-300 text-xs mt-1">{s.duration} mins • ${s.price}</p>
+                      <h4 className="font-bold text-foreground transition-colors group-hover:text-accent-light">{s.name}</h4>
+                      <p className="mt-1 text-xs text-muted-foreground">{s.duration} mins • ${s.price}</p>
                     </div>
-                    <ChevronRight size={20} className="text-zinc-700 group-hover:text-accent-light transition-colors" />
+                    <ChevronRight size={20} className="text-muted-foreground transition-colors group-hover:text-accent-light" />
                   </button>
                 ))}
               </div>
@@ -381,44 +392,47 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               className="space-y-4"
             >
               <button 
+                type="button"
                 onClick={() => setStep("service")}
-                className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-zinc-600 dark:text-zinc-300 transition-colors duration-300 hover:text-white transition-colors mb-4"
+                className="mb-4 flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
               >
                 <ChevronLeft size={14} /> Back to services
               </button>
-              <h3 className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 font-bold uppercase text-[10px] tracking-[0.2em] mb-4">Choose a staff member</h3>
+              <h3 className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Choose a staff member</h3>
               <div className="grid gap-4">
                 {/* Any Specialist Option */}
                 <button
+                  type="button"
                   onClick={() => { setAnySpecialist(true); setSelectedStaff(null); setStep("datetime"); }}
-                  className="flex items-center gap-5 p-4 bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 rounded-2xl hover:border-accent-light transition-all text-left group"
+                  className="group flex items-center gap-5 rounded-2xl border border-border bg-muted/40 p-4 text-left backdrop-blur-sm transition-all hover:border-accent-light/50"
                 >
-                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-white dark:bg-zinc-900 transition-colors duration-300 flex items-center justify-center text-accent-light group-hover:scale-105 transition-all">
+                  <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl border border-border bg-card text-accent-light transition-transform group-hover:scale-105">
                     <User size={32} />
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-zinc-950 dark:text-white group-hover:text-accent-light transition-colors">Any Available Specialist</h4>
-                    <p className="text-zinc-500 text-[10px] uppercase font-bold tracking-widest mt-1">Maximum Operational Flexibility</p>
+                    <h4 className="font-bold text-foreground transition-colors group-hover:text-accent-light">Any Available Specialist</h4>
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Maximum Operational Flexibility</p>
                   </div>
-                  <ChevronRight size={20} className="text-zinc-700 group-hover:text-accent-light transition-colors" />
+                  <ChevronRight size={20} className="text-muted-foreground transition-colors group-hover:text-accent-light" />
                 </button>
 
-                <div className="h-[1px] bg-zinc-100 dark:bg-zinc-800 transition-colors duration-300 my-2" />
+                <div className="my-2 h-px bg-border" />
 
                 {staffList.map((b) => (
                   <button
+                    type="button"
                     key={b.id}
                     onClick={() => { setSelectedStaff(b); setAnySpecialist(false); setStep("datetime"); }}
-                    className="flex items-center gap-5 p-4 bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 rounded-2xl hover:border-accent-light transition-all text-left group"
+                    className="group flex items-center gap-5 rounded-2xl border border-border bg-card p-4 text-left shadow-sm transition-all hover:border-accent-light/50"
                   >
-                    <div className="w-16 h-16 rounded-xl overflow-hidden grayscale group-hover:grayscale-0 transition-all">
-                      <img src={b.photoUrl} className="w-full h-full object-cover" alt={b.name} />
+                    <div className="h-16 w-16 overflow-hidden rounded-xl grayscale transition-all group-hover:grayscale-0">
+                      <img src={b.photoUrl} className="h-full w-full object-cover" alt={b.name} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-zinc-950 dark:text-white group-hover:text-accent-light transition-colors">{b.name}</h4>
-                      <p className="text-zinc-600 dark:text-zinc-300 transition-colors duration-300 text-[10px] uppercase font-bold tracking-widest mt-1">{b.specialty}</p>
+                      <h4 className="font-bold text-foreground transition-colors group-hover:text-accent-light">{b.name}</h4>
+                      <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{b.specialty}</p>
                     </div>
-                    <ChevronRight size={20} className="text-zinc-700 group-hover:text-accent-light transition-colors" />
+                    <ChevronRight size={20} className="text-muted-foreground transition-colors group-hover:text-accent-light" />
                   </button>
                 ))}
               </div>
@@ -434,16 +448,17 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               className="space-y-6"
             >
               <button 
+                type="button"
                 onClick={() => setStep("staff")}
-                className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-zinc-600 dark:text-zinc-300 transition-colors duration-300 hover:text-white transition-colors"
+                className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
               >
                 <ChevronLeft size={14} /> Back to staff
               </button>
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 font-black uppercase text-[9px] tracking-[0.3em]">Temporal Selection</h3>
-                  <span className="text-[10px] font-bold text-accent-light/50 uppercase tracking-widest">Next 14 Days</span>
+                  <h3 className="text-[9px] font-black uppercase tracking-[0.3em] text-muted-foreground">Temporal Selection</h3>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-accent-light/70">Next 14 Days</span>
                 </div>
                 <div className="flex gap-3 overflow-x-auto pb-4 no-scrollbar -mx-2 px-2">
                   {Array.from({ length: 14 }).map((_, i) => {
@@ -453,13 +468,14 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                     
                     return (
                       <button
+                        type="button"
                         key={i}
                         onClick={() => setSelectedDate(d)}
                         className={cn(
-                          "flex flex-col items-center justify-center min-w-[70px] py-4 rounded-xl border transition-all duration-300 relative group",
+                          "group relative flex min-w-[70px] flex-col items-center justify-center rounded-xl border py-4 transition-all duration-300",
                           isSelected 
-                            ? "bg-accent-light border-accent-light text-zinc-950 scale-105 shadow-lg shadow-accent-light/20" 
-                            : "bg-white dark:bg-zinc-900 transition-colors duration-300 border-zinc-200 dark:border-zinc-800 transition-colors duration-300 text-zinc-500 dark:text-zinc-400 transition-colors duration-300 hover:border-zinc-700 hover:text-zinc-200"
+                            ? "scale-105 border-accent-light bg-accent-light text-zinc-950 shadow-lg shadow-accent-light/25" 
+                            : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground dark:bg-card/90"
                         )}
                       >
                         {isToday && !isSelected && (
@@ -481,16 +497,17 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 font-bold uppercase text-[10px] tracking-[0.2em]">Available Times</h3>
+                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Available Times</h3>
                 {availableSlots.length > 0 ? (
                   <div className="grid grid-cols-3 gap-3">
                     {availableSlots.map((time) => (
                       <button
+                        type="button"
                         key={time}
                         onClick={() => { setSelectedTime(time); setStep("details"); }}
                         className={cn(
-                          "py-3 rounded-xl border text-sm font-bold transition-all",
-                          selectedTime === time ? "bg-accent-light border-accent-light text-zinc-950" : "bg-white dark:bg-zinc-900 transition-colors duration-300 border-zinc-200 dark:border-zinc-800 transition-colors duration-300 text-zinc-600 dark:text-zinc-300 transition-colors duration-300 hover:border-zinc-500"
+                          "rounded-xl border py-3 text-sm font-bold transition-all",
+                          selectedTime === time ? "border-accent-light bg-accent-light text-zinc-950" : "border-border bg-card text-foreground hover:border-primary/40 dark:bg-card/90"
                         )}
                       >
                         {time}
@@ -498,8 +515,8 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800/50 text-center">
-                    <p className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 text-sm font-bold uppercase tracking-widest italic">Fully booked for this date</p>
+                  <div className="rounded-2xl border border-border bg-muted/50 p-8 text-center backdrop-blur-sm">
+                    <p className="text-sm font-bold uppercase italic tracking-widest text-muted-foreground">Fully booked for this date</p>
                   </div>
                 )}
               </div>
@@ -515,26 +532,27 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               className="space-y-6"
             >
               <button 
+                type="button"
                 onClick={() => setStep("datetime")}
-                className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-zinc-600 dark:text-zinc-300 transition-colors duration-300 hover:text-white transition-colors"
+                className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
               >
                 <ChevronLeft size={14} /> Back to time selection
               </button>
 
-              <div className="bg-zinc-50 dark:bg-surface-dark transition-colors duration-300 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-900 transition-colors duration-300 space-y-4 shadow-inner">
-                 <div className="flex justify-between items-start">
+              <div className="space-y-4 rounded-3xl border border-border bg-muted/40 p-6 shadow-inner backdrop-blur-sm">
+                 <div className="flex items-start justify-between">
                     <div>
-                       <p className="text-accent-light text-[10px] font-black uppercase tracking-widest mb-1">Appointment Summary</p>
-                       <h4 className="text-zinc-950 dark:text-white text-xl font-black uppercase tracking-tight">{selectedService?.name}</h4>
+                       <p className="mb-1 text-[10px] font-black uppercase tracking-widest text-accent-light">Appointment Summary</p>
+                       <h4 className="text-xl font-black uppercase tracking-tight text-foreground">{selectedService?.name}</h4>
                     </div>
-                    <span className="text-zinc-600 dark:text-zinc-300 transition-colors duration-300 font-black">${selectedService?.price}</span>
+                    <span className="font-black text-foreground">${selectedService?.price}</span>
                  </div>
-                 <div className="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-200 dark:border-zinc-900 transition-colors duration-300 text-xs">
-                    <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 transition-colors duration-300">
+                 <div className="grid grid-cols-2 gap-4 border-t border-border pt-4 text-xs">
+                    <div className="flex items-center gap-2 text-muted-foreground">
                        <User size={14} className="text-accent-light" />
                        {anySpecialist ? "Any Available Specialist" : selectedStaff?.name}
                     </div>
-                    <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 transition-colors duration-300">
+                    <div className="flex items-center gap-2 text-muted-foreground">
                        <Clock size={14} className="text-accent-light" />
                        {format(selectedDate, "MMM d")} @ {selectedTime}
                     </div>
@@ -542,31 +560,31 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 font-bold uppercase text-[10px] tracking-[0.2em]">Contact Details</h3>
+                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Contact Details</h3>
                 <div className="space-y-3">
-                  <div className="relative group">
-                    <UserCircle className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 dark:text-zinc-400 transition-colors duration-300 group-focus-within:text-accent-light transition-colors" size={20} />
+                  <div className="group relative">
+                    <UserCircle className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" size={20} />
                     <input
                       placeholder="Full Name"
-                      className="w-full bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-4 pl-12 rounded-2xl outline-none focus:border-accent-light text-zinc-950 dark:text-white transition-all"
+                      className={fieldWithIcon}
                       value={customerInfo.name}
                       onChange={(e) => setCustomerInfo({...customerInfo, name: e.target.value})}
                     />
                   </div>
-                  <div className="relative group">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 dark:text-zinc-400 transition-colors duration-300 group-focus-within:text-accent-light transition-colors" size={20} />
+                  <div className="group relative">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" size={20} />
                     <input
                       placeholder="Email Address"
-                      className="w-full bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-4 pl-12 rounded-2xl outline-none focus:border-accent-light text-zinc-950 dark:text-white transition-all"
+                      className={fieldWithIcon}
                       value={customerInfo.email}
                       onChange={(e) => setCustomerInfo({...customerInfo, email: e.target.value})}
                     />
                   </div>
-                  <div className="relative group">
-                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 dark:text-zinc-400 transition-colors duration-300 group-focus-within:text-accent-light transition-colors" size={20} />
+                  <div className="group relative">
+                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" size={20} />
                     <input
                       placeholder="Phone Number"
-                      className="w-full bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-4 pl-12 rounded-2xl outline-none focus:border-accent-light text-zinc-950 dark:text-white transition-all"
+                      className={fieldWithIcon}
                       value={customerInfo.phone}
                       onChange={(e) => setCustomerInfo({...customerInfo, phone: e.target.value})}
                     />
@@ -575,12 +593,13 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               </div>
 
               <button
+                type="button"
                 disabled={!customerInfo.name || !customerInfo.email || !customerInfo.phone || isSubmitting}
                 onClick={handleConfirm}
-                className="mt-4 flex w-full items-center justify-center gap-3 rounded-2xl bg-primary p-5 font-black uppercase tracking-widest text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:bg-secondary disabled:text-muted-foreground"
+                className={btnPrimaryFull}
               >
                 {isSubmitting ? (
-                  <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground" />
                 ) : (
                   <>
                     <CheckCircle size={22} />
@@ -597,28 +616,29 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               key="payment"
-              className="space-y-6 text-center py-6"
+              className="space-y-6 py-6 text-center"
             >
-              <div className="w-20 h-20 bg-accent-light/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-accent-light/20">
+              <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-accent-light/25 bg-accent-light/10">
                 <AlertCircle className="text-accent-light" size={40} />
               </div>
               
               <div className="space-y-2">
-                <h3 className="text-2xl font-black uppercase tracking-tight text-zinc-950 dark:text-white">Stripe Setup Required</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 text-sm leading-relaxed max-w-sm mx-auto">
+                <h3 className="text-2xl font-black uppercase tracking-tight text-foreground">Stripe Setup Required</h3>
+                <p className="mx-auto max-w-sm text-sm leading-relaxed text-muted-foreground">
                   {paymentError || "The payment system is being configured. Please contact the administrator to complete your booking."}
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-6 rounded-3xl text-left space-y-4">
-                 <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Wait-list Reserved</p>
-                 <p className="text-zinc-950 dark:text-white text-sm font-bold">Your details for {format(selectedDate, "MMM d")} @ {selectedTime} have been saved.</p>
-                 <p className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 text-xs">Once Stripe is configured, you will receive a payment link via email.</p>
+              <div className="space-y-4 rounded-3xl border border-border bg-card/95 p-6 text-left shadow-elevated backdrop-blur-md dark:bg-card/90">
+                 <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Wait-list Reserved</p>
+                 <p className="text-sm font-bold text-foreground">Your details for {format(selectedDate, "MMM d")} @ {selectedTime} have been saved.</p>
+                 <p className="text-xs text-muted-foreground">Once Stripe is configured, you will receive a payment link via email.</p>
               </div>
 
               <button
+                type="button"
                 onClick={onClose}
-                className="w-full bg-white text-zinc-950 p-5 rounded-2xl font-black uppercase tracking-widest transition-all mt-4"
+                className="mt-4 w-full rounded-2xl border border-border bg-secondary p-5 font-black uppercase tracking-widest text-secondary-foreground transition-colors hover:bg-muted"
               >
                 Close & Notify Me Later
               </button>
@@ -630,38 +650,39 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               key="success"
-              className="text-center py-12 space-y-6"
+              className="space-y-6 py-12 text-center"
             >
               {isCancelled ? (
                 <>
-                  <div className="w-24 h-24 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-red-500/20">
+                  <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full border border-red-500/25 bg-red-500/10">
                     <X className="text-red-500" size={60} />
                   </div>
-                  <h2 className="text-4xl font-black uppercase tracking-tight text-zinc-950 dark:text-white">{config.success.cancelled}</h2>
-                  <p className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 max-w-xs mx-auto text-sm leading-relaxed">
+                  <h2 className="text-4xl font-black uppercase tracking-tight text-foreground">{config.success.cancelled}</h2>
+                  <p className="mx-auto max-w-xs text-sm leading-relaxed text-muted-foreground">
                     Your appointment has been successfully cancelled.
                   </p>
                   
                   <button
+                    type="button"
                     onClick={handleClose}
-                    className="w-full bg-white text-zinc-950 p-4 rounded-xl font-bold uppercase tracking-widest transition-all mt-4"
+                    className="mt-4 w-full rounded-2xl bg-primary p-4 font-bold uppercase tracking-widest text-primary-foreground shadow-md transition-colors hover:bg-accent-light hover:text-zinc-950"
                   >
                     Done
                   </button>
                 </>
               ) : (
                 <>
-                  <div className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-green-500/20">
+                  <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full border border-green-500/25 bg-green-500/10">
                     <CheckCircle className="text-green-500" size={60} />
                   </div>
-                  <h2 className="text-4xl font-black uppercase tracking-tight text-zinc-950 dark:text-white">
+                  <h2 className="text-4xl font-black uppercase tracking-tight text-foreground">
                     {
                       (new URLSearchParams(window.location.search).get("booking_status") === "success" || !paymentsRequired)
                        ? config.success.confirmed 
                        : config.success.requestSaved
                     }
                   </h2>
-                  <p className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300 max-w-xs mx-auto text-sm leading-relaxed">
+                  <p className="mx-auto max-w-xs text-sm leading-relaxed text-muted-foreground">
                     {
                       new URLSearchParams(window.location.search).get("booking_status") === "success" 
                         ? "Excellent. Your payment was successful and your spot is strictly reserved." 
@@ -672,28 +693,30 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                   </p>
                   
                   {selectedService && (
-                    <div className="bg-white dark:bg-zinc-900 transition-colors duration-300 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 inline-block text-left w-full">
-                       <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500 dark:text-zinc-400 transition-colors duration-300 mb-2 underline decoration-accent-light underline-offset-4">Your Appointment</p>
-                       <p className="text-zinc-950 dark:text-white font-bold">{format(selectedDate, "EEEE, MMMM do")}</p>
-                       <p className="text-accent-light font-black text-2xl tracking-tighter">{selectedTime}</p>
-                       <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-300 flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 transition-colors duration-300">
+                    <div className="inline-block w-full rounded-3xl border border-border bg-card/95 p-6 text-left shadow-elevated backdrop-blur-md dark:bg-card/90">
+                       <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground underline decoration-accent-light underline-offset-4">Your Appointment</p>
+                       <p className="font-bold text-foreground">{format(selectedDate, "EEEE, MMMM do")}</p>
+                       <p className="text-2xl font-black tracking-tighter text-accent-light">{selectedTime}</p>
+                       <div className="mt-4 flex items-center gap-3 border-t border-border pt-4 text-xs text-muted-foreground">
                           <User size={14} className="text-accent-light" />
                           {anySpecialist ? "Assigned Specialist" : `Staff: ${selectedStaff?.name}`}
                        </div>
                     </div>
                   )}
 
-                  <div className="grid grid-cols-2 gap-3 mt-6">
+                  <div className="mt-6 grid grid-cols-2 gap-3">
                     <button
+                      type="button"
                       onClick={handleCancel}
                       disabled={isCancelling || !appointmentId}
-                      className="w-full bg-transparent border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 hover:border-red-500/50 hover:text-red-500 text-zinc-500 dark:text-zinc-400 transition-colors duration-300 p-4 rounded-xl font-bold uppercase tracking-widest transition-all text-xs disabled:opacity-50"
+                      className="w-full rounded-xl border border-border bg-transparent p-4 text-xs font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:border-red-500/40 hover:text-red-500 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {isCancelling ? "Cancelling..." : "Cancel"}
                     </button>
                     <button
+                      type="button"
                       onClick={handleClose}
-                      className="w-full bg-white text-zinc-950 p-4 rounded-xl font-bold uppercase tracking-widest transition-all text-xs"
+                      className="w-full rounded-xl bg-primary p-4 text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-md transition-colors hover:bg-accent-light hover:text-zinc-950"
                     >
                       Done
                     </button>

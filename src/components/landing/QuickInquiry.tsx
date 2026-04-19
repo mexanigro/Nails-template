@@ -3,6 +3,10 @@ import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { siteConfig } from "../../config/site";
 
+/** Stripe-style fields — visual only */
+const inputClass =
+  "w-full rounded-2xl border border-border bg-muted/50 px-4 py-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-muted/30";
+
 export function QuickInquiry() {
   const { sections } = siteConfig;
   const { contact: sectionConfig } = sections;
@@ -40,23 +44,26 @@ export function QuickInquiry() {
 
   return (
     <section id="contact" className="bg-background px-6 py-24 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-accent-light font-bold uppercase tracking-[0.3em] text-xs mb-4">{sectionConfig.title}</h2>
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-accent-light">{sectionConfig.title}</h2>
           <h3 className="mb-6 text-4xl font-black uppercase tracking-tighter text-foreground md:text-5xl">{sectionConfig.subtitle}</h3>
-          <p className="text-zinc-500 dark:text-zinc-400 transition-colors duration-300">{sectionConfig.description}</p>
+          <p className="text-muted-foreground transition-colors duration-300">{sectionConfig.description}</p>
         </div>
 
-        <div className="max-w-xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="mx-auto max-w-xl">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 rounded-3xl border border-border bg-card/95 p-6 shadow-elevated backdrop-blur-md transition-colors duration-300 sm:p-8 dark:bg-card/90"
+          >
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <input
                 required
                 type="text"
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-4 rounded-2xl outline-none focus:border-accent-light text-zinc-950 dark:text-white transition-all"
+                className={inputClass}
               />
               <input
                 required
@@ -64,7 +71,7 @@ export function QuickInquiry() {
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-4 rounded-2xl outline-none focus:border-accent-light text-zinc-950 dark:text-white transition-all"
+                className={inputClass}
               />
             </div>
             <input
@@ -72,7 +79,7 @@ export function QuickInquiry() {
               placeholder="Subject (Optional)"
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-              className="w-full bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-4 rounded-2xl outline-none focus:border-accent-light text-zinc-950 dark:text-white transition-all"
+              className={inputClass}
             />
             <textarea
               required
@@ -80,16 +87,16 @@ export function QuickInquiry() {
               placeholder="Your Message"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full bg-white dark:bg-zinc-900 transition-colors duration-300 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 p-4 rounded-2xl outline-none focus:border-accent-light text-zinc-950 dark:text-white transition-all resize-none"
+              className={`${inputClass} resize-none`}
             />
 
             <button
               disabled={status === "submitting"}
               type="submit"
-              className="flex w-full items-center justify-center gap-3 rounded-2xl bg-primary p-5 font-black uppercase tracking-widest text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:bg-secondary disabled:text-muted-foreground"
+              className="flex w-full items-center justify-center gap-3 rounded-2xl bg-primary p-5 font-black uppercase tracking-widest text-primary-foreground shadow-md transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:cursor-not-allowed disabled:bg-secondary disabled:text-muted-foreground"
             >
               {status === "submitting" ? (
-                <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground" />
               ) : (
                 <>
                   <Send size={20} />
@@ -104,7 +111,7 @@ export function QuickInquiry() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="p-4 bg-green-500/10 border border-green-500/20 rounded-2xl flex items-center gap-3 text-green-500 text-sm font-bold"
+                  className="flex items-center gap-3 rounded-2xl border border-green-500/25 bg-green-500/10 p-4 text-sm font-bold text-green-600 dark:text-green-400"
                 >
                   <CheckCircle size={18} />
                   <span>Message sent! We'll get back to you soon.</span>
@@ -115,7 +122,7 @@ export function QuickInquiry() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-500 text-sm font-bold"
+                  className="flex items-center gap-3 rounded-2xl border border-red-500/25 bg-red-500/10 p-4 text-sm font-bold text-red-600 dark:text-red-400"
                 >
                   <AlertCircle size={18} />
                   <span>Something went wrong. Please try again.</span>

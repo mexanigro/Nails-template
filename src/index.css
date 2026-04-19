@@ -58,6 +58,11 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+
+  /* Registered utility `shadow-elevated` (required for @apply + consistent builds in Tailwind v4) */
+  --shadow-elevated:
+    0 10px 40px -12px rgb(15 23 42 / 0.08),
+    0 4px 16px -4px rgb(15 23 42 / 0.06);
 }
 
 @layer base {
@@ -69,13 +74,8 @@
   }
 }
 
-/* Elevated surfaces: soft depth in light, subtle depth + hairline highlight in dark */
+/* Dark mode depth override (light shadow comes from @theme --shadow-elevated) */
 @layer utilities {
-  .shadow-elevated {
-    box-shadow:
-      0 10px 40px -12px rgb(15 23 42 / 0.08),
-      0 4px 16px -4px rgb(15 23 42 / 0.06);
-  }
   .dark .shadow-elevated {
     box-shadow:
       0 18px 48px -16px rgb(0 0 0 / 0.55),
