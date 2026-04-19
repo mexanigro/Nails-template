@@ -2,6 +2,13 @@
 import { SiteConfig } from "../types";
 
 export const siteConfig: SiteConfig = {
+  business: {
+    type: "barberia",
+    legalName: "ONYX & STEEL GROOMING LLC",
+    address:
+      "123 Precision Way, Downtown Arts District, New York, NY 10012, Estados Unidos",
+    cancellationPolicy: "24 horas de antelación respecto al inicio de la cita",
+  },
   brand: {
     name: "ONYX & STEEL",
     tagline: "The Modern Gentleman's Sanctuary",

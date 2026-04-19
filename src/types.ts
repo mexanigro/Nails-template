@@ -85,7 +85,30 @@ export type Benefit = {
   iconName: string; // lucide-react icon name as string
 };
 
+export type BusinessNiche = "barberia" | "estetica" | "abogado";
+
+/** Rutas del shell público (landing, galería y páginas legales con URL). */
+export type PublicShellPage =
+  | "landing"
+  | "gallery"
+  | "privacy"
+  | "terms"
+  | "cancellation";
+
 export type SiteConfig = {
+  /**
+   * Identidad comercial y marco legal para textos legales dinámicos
+   * (privacidad, términos, cancelación) y pie de información.
+   */
+  business: {
+    type: BusinessNiche;
+    /** Razón social o nombre legal tal como figura en documentos. */
+    legalName: string;
+    /** Dirección completa en una sola línea (incl. ciudad, CP, país). */
+    address: string;
+    /** Plazo mínimo de aviso: p. ej. "24 horas de antelación", "48 horas laborables". */
+    cancellationPolicy: string;
+  };
   brand: {
     name: string;
     tagline: string;

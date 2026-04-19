@@ -21,20 +21,48 @@ import { BookingWizard } from "./components/booking/BookingWizard";
 import { AdminDashboard } from "./components/admin/AdminDashboard";
 import { ProtectedRoute } from "./components/admin/ProtectedRoute";
 import { GalleryPage } from "./components/gallery/GalleryPage";
-import { PolicyModal } from "./components/shared/PolicyModal";
 import { Chatbot } from "./components/chat/Chatbot";
-
-type PolicyType = "privacy" | "terms" | "cancellation";
+import { LegalPage } from "./components/legal/LegalPage";
 
 import { siteConfig } from "./config/site";
 import { useSEO } from "./hooks/useSEO";
+import type { LegalDocKind } from "./config/legalContent";
+import type { PublicShellPage } from "./types";
+
+function normalizePath(pathname: string): string {
+  const p = pathname.replace(/\/$/, "") || "/";
+  return p;
+}
+
+function pathToPublicPage(pathname: string): PublicPage {
+  const p = normalizePath(pathname);
+  if (p === "/privacidad" || p === "/privacy") return "privacy";
+  if (p === "/terminos" || p === "/terms") return "terms";
+  if (p === "/cancelacion" || p === "/cancellation") return "cancellation";
+  return "landing";
+}
+
+function legalKindToPath(kind: LegalDocKind): string {
+  switch (kind) {
+    case "privacy":
+      return "/privacidad";
+    case "terms":
+      return "/terminos";
+    case "cancellation":
+      return "/cancelacion";
+    default:
+      return "/";
+  }
+}
 
 export default function App() {
   useSEO();
 
   const [showBooking, setShowBooking] = React.useState(false);
-  const [page, setPage] = React.useState<"landing" | "admin" | "gallery">("landing");
-  const [activePolicy, setActivePolicy] = React.useState<PolicyType | null>(null);
+  const [page, setPage] = React.useState<PublicShellPage | "admin">(() => {
+    if (typeof window === "undefined") return "landing";
+    return pathToPublicPage(window.location.pathname);
+  });
 
   React.useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -45,6 +73,7 @@ export default function App() {
 
   React.useEffect(() => {
     if (page === "gallery" && !siteConfig.features.showGallery) {
+      window.history.replaceState({}, "", "/");
       setPage("landing");
     }
   }, [page]);
@@ -56,16 +85,28 @@ export default function App() {
   }, []);
 
   React.useEffect(() => {
+    const onPopState = () => {
+      setPage(pathToPublicPage(window.location.pathname));
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const isLegal = page === "privacy" || page === "terms" || page === "cancellation";
+    if (!isLegal) {
+      document.title = siteConfig.brand.name;
+    }
+
     const hash = window.location.hash;
     if (page === "landing" && hash) {
       const element = document.getElementById(hash.substring(1));
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
-        return;
       }
     }
-    window.scrollTo(0, 0);
-    document.title = siteConfig.brand.name;
   }, [page]);
 
   const handleBookNow = () => {
@@ -73,6 +114,26 @@ export default function App() {
       setShowBooking(true);
     }
   };
+
+  const navigatePublic = React.useCallback((target: PublicShellPage) => {
+    if (target === "privacy" || target === "terms" || target === "cancellation") {
+      window.history.pushState({}, "", legalKindToPath(target));
+      setPage(target);
+      return;
+    }
+    window.history.pushState({}, "", "/");
+    setPage(target);
+  }, []);
+
+  const navigateToLegal = React.useCallback((kind: LegalDocKind) => {
+    window.history.pushState({}, "", legalKindToPath(kind));
+    setPage(kind);
+  }, []);
+
+  const handleHomeFromLegal = React.useCallback(() => {
+    window.history.pushState({}, "", "/");
+    setPage("landing");
+  }, []);
 
   if (page === "admin") {
     return (
@@ -82,89 +143,106 @@ export default function App() {
     );
   }
 
+  const shellCommon = (
+    <>
+      <ScrollToTop />
+      <Chatbot />
+      <AnimatePresence>
+        {siteConfig.features.showBooking && showBooking && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-white/80 backdrop-blur-md transition-colors duration-300 dark:bg-black/80"
+              onClick={() => setShowBooking(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-lg rounded-3xl border border-border bg-card/95 p-6 text-card-foreground shadow-elevated backdrop-blur-md transition-colors duration-300 md:p-10 dark:bg-card/90"
+            >
+              <BookingWizard onClose={() => setShowBooking(false)} />
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+
+  const isLegalPage =
+    page === "privacy" || page === "terms" || page === "cancellation";
+
   if (page === "gallery" && siteConfig.features.showGallery) {
     return (
       <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-        <Navbar onBookClick={handleBookNow} onPageChange={setPage} currentPage={page} />
-        <GalleryPage onBack={() => setPage("landing")} />
-        <Footer onAdminClick={() => setPage("admin")} onPolicyClick={setActivePolicy} onPageChange={setPage} />
-        <ScrollToTop />
-        <Chatbot />
-        <AnimatePresence>
-          {siteConfig.features.showBooking && showBooking && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-               <motion.div 
-                 initial={{ opacity: 0 }}
-                 animate={{ opacity: 1 }}
-                 exit={{ opacity: 0 }}
-                 className="absolute inset-0 bg-white/80 backdrop-blur-md transition-colors duration-300 dark:bg-black/80"
-                 onClick={() => setShowBooking(false)}
-               />
-               <motion.div 
-                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                 className="relative w-full max-w-lg rounded-3xl border border-border bg-card/95 p-6 text-card-foreground shadow-elevated backdrop-blur-md transition-colors duration-300 md:p-10 dark:bg-card/90"
-               >
-                  <BookingWizard onClose={() => setShowBooking(false)} />
-               </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
+        <Navbar
+          onBookClick={handleBookNow}
+          onPageChange={navigatePublic}
+          currentPage={page}
+        />
+        <GalleryPage onBack={() => navigatePublic("landing")} />
+        <Footer
+          onAdminClick={() => setPage("admin")}
+          onLegalNavigate={navigateToLegal}
+          onPageChange={navigatePublic}
+        />
+        {shellCommon}
+      </div>
+    );
+  }
+
+  if (isLegalPage) {
+    return (
+      <div className="min-h-screen bg-background font-sans text-foreground transition-colors duration-300">
+        <Navbar
+          onBookClick={handleBookNow}
+          onPageChange={navigatePublic}
+          currentPage={page}
+        />
+        <main>
+          <LegalPage kind={page} onBackHome={handleHomeFromLegal} />
+        </main>
+        <Footer
+          onAdminClick={() => setPage("admin")}
+          onLegalNavigate={navigateToLegal}
+          onPageChange={navigatePublic}
+        />
+        {shellCommon}
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-accent-light selection:text-zinc-950 transition-colors duration-300">
-      <Navbar onBookClick={handleBookNow} onPageChange={setPage} currentPage={page} />
-      
+      <Navbar
+        onBookClick={handleBookNow}
+        onPageChange={navigatePublic}
+        currentPage={page}
+      />
+
       <main>
         {siteConfig.features.showHero && <Hero onBookClick={handleBookNow} />}
-        {siteConfig.features.showServices && <Services onBookClick={handleBookNow} />}
+        {siteConfig.features.showServices && (
+          <Services onBookClick={handleBookNow} />
+        )}
         {siteConfig.features.showWhyChooseUs && <WhyChooseUs />}
         {siteConfig.features.showTeam && <Team onBookClick={handleBookNow} />}
-        {siteConfig.features.showGallery && <Gallery onViewFull={() => setPage("gallery")} />}
+        {siteConfig.features.showGallery && (
+          <Gallery onViewFull={() => navigatePublic("gallery")} />
+        )}
         {siteConfig.features.showTestimonials && <Testimonials />}
         {siteConfig.features.showInquiry && <QuickInquiry />}
         {siteConfig.features.showLocation && <Location />}
       </main>
 
-      <Footer onAdminClick={() => setPage("admin")} onPolicyClick={setActivePolicy} onPageChange={setPage} />
-      <ScrollToTop />
-      <Chatbot />
-
-      {/* Booking Modal */}
-      <AnimatePresence>
-        {siteConfig.features.showBooking && showBooking && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-             <motion.div 
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               exit={{ opacity: 0 }}
-               className="absolute inset-0 bg-white/80 backdrop-blur-md transition-colors duration-300 dark:bg-black/80"
-               onClick={() => setShowBooking(false)}
-             />
-             <motion.div 
-               initial={{ opacity: 0, scale: 0.9, y: 20 }}
-               animate={{ opacity: 1, scale: 1, y: 0 }}
-               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-               className="relative w-full max-w-lg rounded-3xl border border-border bg-card/95 p-6 text-card-foreground shadow-elevated backdrop-blur-md transition-colors duration-300 md:p-10 dark:bg-card/90"
-             >
-                <BookingWizard onClose={() => setShowBooking(false)} />
-             </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* Policy Modal */}
-      <AnimatePresence>
-        {activePolicy && (
-          <PolicyModal type={activePolicy} onClose={() => setActivePolicy(null)} />
-        )}
-      </AnimatePresence>
+      <Footer
+        onAdminClick={() => setPage("admin")}
+        onLegalNavigate={navigateToLegal}
+        onPageChange={navigatePublic}
+      />
+      {shellCommon}
     </div>
   );
 }
-
-

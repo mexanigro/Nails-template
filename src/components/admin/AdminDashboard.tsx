@@ -99,7 +99,9 @@ export function AdminDashboard({ onExit }: { onExit: () => void }) {
             </div>
           </div>
           <div className="flex items-center gap-4">
-             <ThemeToggle />
+             <div className="md:hidden">
+               <ThemeToggle />
+             </div>
              <div className="glass-panel flex items-center gap-3 rounded-2xl px-5 py-3">
                <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Live Sync Active</span>

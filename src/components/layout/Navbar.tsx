@@ -4,11 +4,12 @@ import { Menu, X, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "../../lib/utils";
 import { siteConfig } from "../../config/site";
+import type { PublicShellPage } from "../../types";
 import { ThemeToggle } from "../theme/ThemeToggle";
 
 export function Navbar({ onBookClick, onPageChange, currentPage }: { 
   onBookClick: () => void, 
-  onPageChange: (page: "landing" | "gallery") => void,
+  onPageChange: (page: PublicShellPage) => void,
   currentPage: string 
 }) {
   const BrandIcon = (Icons as any)[siteConfig.brand.logoIconName || "Scissors"] || Icons.Scissors;
@@ -23,7 +24,9 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
 
   /** Light nav copy on transparent bar over the dark Hero overlay */
   const overlayNav =
-    !scrolled && currentPage === "landing" && siteConfig.features.showHero;
+    !scrolled &&
+    currentPage === "landing" &&
+    siteConfig.features.showHero;
 
   const navLinks = [
     { name: "Services", href: "#services", type: "anchor", enabled: siteConfig.features.showServices },

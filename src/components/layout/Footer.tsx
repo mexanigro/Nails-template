@@ -2,16 +2,18 @@ import React from "react";
 import * as Icons from "lucide-react";
 import { MapPin, Phone, Mail, Instagram, Facebook, Twitter } from "lucide-react";
 import { siteConfig } from "../../config/site";
+import { LEGAL_ROUTES, type LegalDocKind } from "../../config/legalContent";
+import type { PublicShellPage } from "../../types";
 import { useAdminAccess } from "../../hooks/useAdminAccess";
 
 export function Footer({ 
   onAdminClick, 
-  onPolicyClick,
+  onLegalNavigate,
   onPageChange
 }: { 
   onAdminClick: () => void, 
-  onPolicyClick: (policy: "privacy" | "terms" | "cancellation") => void,
-  onPageChange: (page: "landing" | "gallery") => void
+  onLegalNavigate: (policy: LegalDocKind) => void,
+  onPageChange: (page: PublicShellPage) => void
 }) {
   const { contact, hours, brand } = siteConfig;
   const { user, loading: authLoading, isAdmin } = useAdminAccess();
@@ -87,9 +89,36 @@ export function Footer({
       <div className="mx-auto mt-20 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border pt-8 text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-300 md:flex-row">
         <p>© 2026 {brand.name}. All Rights Reserved.</p>
         <div className="flex flex-wrap justify-center gap-6">
-          <button onClick={() => onPolicyClick("privacy")} className="hover:text-accent-light transition-colors cursor-pointer">Privacy Policy</button>
-          <button onClick={() => onPolicyClick("terms")} className="hover:text-accent-light transition-colors cursor-pointer">Terms of Service</button>
-          <button onClick={() => onPolicyClick("cancellation")} className="hover:text-accent-light transition-colors cursor-pointer">Cancellation Policy</button>
+          <a
+            href={LEGAL_ROUTES.privacy}
+            onClick={(e) => {
+              e.preventDefault();
+              onLegalNavigate("privacy");
+            }}
+            className="cursor-pointer transition-colors hover:text-accent-light"
+          >
+            Política de Privacidad
+          </a>
+          <a
+            href={LEGAL_ROUTES.terms}
+            onClick={(e) => {
+              e.preventDefault();
+              onLegalNavigate("terms");
+            }}
+            className="cursor-pointer transition-colors hover:text-accent-light"
+          >
+            Términos y Condiciones
+          </a>
+          <a
+            href={LEGAL_ROUTES.cancellation}
+            onClick={(e) => {
+              e.preventDefault();
+              onLegalNavigate("cancellation");
+            }}
+            className="cursor-pointer transition-colors hover:text-accent-light"
+          >
+            Política de Cancelación
+          </a>
           {showAdminNavLink ? (
             <button
               type="button"

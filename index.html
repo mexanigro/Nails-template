@@ -1,8 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Evita flash claro: escritorio siempre dark; móvil respeta vite-ui-theme -->
+    <script>
+      (function () {
+        try {
+          var desktop = window.matchMedia("(min-width: 768px)").matches;
+          var stored = localStorage.getItem("vite-ui-theme");
+          var root = document.documentElement;
+          root.classList.remove("light", "dark");
+          if (desktop || stored !== "light") {
+            root.classList.add("dark");
+          } else {
+            root.classList.add("light");
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <!--
     ╔══════════════════════════════════════════════════════════════════════════════╗
