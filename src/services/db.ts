@@ -1,0 +1,256 @@
+import { 
+  collection, 
+  addDoc, 
+  getDocs, 
+  updateDoc, 
+  deleteDoc, 
+  doc, 
+  query, 
+  where, 
+  orderBy, 
+  onSnapshot,
+  Timestamp,
+  serverTimestamp,
+  runTransaction,
+  setDoc,
+  getDoc
+} from 'firebase/firestore';
+import { db, auth } from '../lib/firebase';
+import { Appointment, AppointmentStatus, Barber } from '../types';
+import { siteConfig } from '../config/site';
+import { checkAvailability } from '../lib/booking';
+import { format, parse, setMinutes, setHours, startOfDay, addMinutes, isBefore, isAfter } from 'date-fns';
+import { SCHEDULING_CONFIG } from '../constants';
+
+enum OperationType {
+  CREATE = 'create',
+  UPDATE = 'update',
+  DELETE = 'delete',
+  LIST = 'list',
+  GET = 'get',
+  WRITE = 'write',
+}
+
+interface FirestoreErrorInfo {
+  error: string;
+  operationType: OperationType;
+  path: string | null;
+  authInfo: any;
+}
+
+function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
+  const errInfo: FirestoreErrorInfo = {
+    error: error instanceof Error ? error.message : String(error),
+    authInfo: {
+      userId: auth.currentUser?.uid,
+      email: auth.currentUser?.email,
+      emailVerified: auth.currentUser?.emailVerified,
+      isAnonymous: auth.currentUser?.isAnonymous,
+      tenantId: auth.currentUser?.tenantId,
+      providerInfo: auth.currentUser?.providerData.map(provider => ({
+        providerId: provider.providerId,
+        displayName: provider.displayName,
+        email: provider.email,
+        photoUrl: provider.photoURL
+      })) || []
+    },
+    operationType,
+    path
+  };
+  console.error('Firestore Error: ', JSON.stringify(errInfo));
+  throw new Error(JSON.stringify(errInfo));
+}
+
+const APPOINTMENTS_COLLECTION = 'appointments';
+
+export const dbService = {
+  // Real-time listener for appointments
+  subscribeToAppointments: (callback: (appointments: Appointment[]) => void) => {
+    const q = query(
+      collection(db, APPOINTMENTS_COLLECTION),
+      orderBy('createdAt', 'desc')
+    );
+    
+    return onSnapshot(q, (snapshot) => {
+      const appointments = snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id,
+        // Convert Firestore timestamp to Date or handle it in component
+        createdAt: doc.data().createdAt?.toDate() || new Date(),
+      } as Appointment));
+      callback(appointments);
+    }, (error) => {
+      handleFirestoreError(error, OperationType.GET, APPOINTMENTS_COLLECTION);
+    });
+  },
+
+  getAppointments: async (): Promise<Appointment[]> => {
+    try {
+      const q = query(collection(db, APPOINTMENTS_COLLECTION), orderBy('createdAt', 'desc'));
+      const snapshot = await getDocs(q);
+      return snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id,
+        createdAt: doc.data().createdAt?.toDate() || new Date(),
+      } as Appointment));
+    } catch (error) {
+      handleFirestoreError(error, OperationType.LIST, APPOINTMENTS_COLLECTION);
+      return [];
+    }
+  },
+
+  getAppointmentsForDate: async (date: string): Promise<Appointment[]> => {
+    try {
+      const q = query(
+        collection(db, APPOINTMENTS_COLLECTION), 
+        where('date', '==', date),
+        where('status', '!=', 'cancelled')
+      );
+      const snapshot = await getDocs(q);
+      return snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id,
+        createdAt: doc.data().createdAt?.toDate() || new Date(),
+      } as Appointment));
+    } catch (error) {
+      handleFirestoreError(error, OperationType.LIST, APPOINTMENTS_COLLECTION);
+      return [];
+    }
+  },
+
+  /**
+   * Merges static siteConfig.barbers with real-time Firestore overrides.
+   * This ensures the scheduling logic always uses the most recent personnel parameters.
+   */
+  getBarbers: async (): Promise<Barber[]> => {
+    try {
+      const overrides = await dbService.getBarberOverrides();
+      return siteConfig.barbers.map(b => {
+        const override = overrides[b.id];
+        if (!override) return b;
+        return {
+          ...b,
+          schedule: override.schedule || b.schedule,
+          blockedDates: override.blockedDates || b.blockedDates || [],
+          blockedSlots: override.blockedSlots || b.blockedSlots || [],
+        };
+      });
+    } catch (error) {
+      console.error("Failed to synchronize personnel registry:", error);
+      return siteConfig.barbers;
+    }
+  },
+  
+  saveAppointment: async (appointment: Omit<Appointment, 'id' | 'createdAt'>): Promise<string> => {
+    try {
+      return await runTransaction(db, async (transaction) => {
+        const dateStr = appointment.date;
+        const barberId = appointment.barberId;
+        
+        // 1. Fetch current appointments for this barber and date WITHIN THE TRANSACTION
+        // Actually, since we can't query collections in transactions, we look at the daily manifest.
+        const manifestRef = doc(db, 'daily_manifests', `${barberId}_${dateStr}`);
+        const manifestSnap = await transaction.get(manifestRef);
+        
+        // Fetch existing appointments using the manifest's tracking IDs if possible or just use the current appointments for validation
+        // A better approach for 100% safety is to check the manifest's occupied intervals.
+        const occupiedIntervals: { start: string, end: string }[] = manifestSnap.exists() ? manifestSnap.data().intervals : [];
+        
+        // 2. Fetch the latest personnel config (including overrides)
+        const overrideRef = doc(db, 'barber_overrides', barberId);
+        const overrideDoc = await transaction.get(overrideRef);
+        const staticBarber = siteConfig.barbers.find(b => b.id === barberId);
+        
+        if (!staticBarber) throw new Error("Personnel not found in static registry.");
+        
+        const barber: Barber = !overrideDoc.exists() ? staticBarber : {
+          ...staticBarber,
+          schedule: overrideDoc.data().schedule || staticBarber.schedule,
+          blockedDates: overrideDoc.data().blockedDates || staticBarber.blockedDates || [],
+          blockedSlots: overrideDoc.data().blockedSlots || staticBarber.blockedSlots || [],
+        };
+
+        // 3. Perform atomic cross-check validation
+        // We need to verify if the new interval [time, time+duration+buffer] overlaps with any occupiedIntervals
+        const date = parse(dateStr, "yyyy-MM-dd", new Date());
+        const slotStart = setMinutes(setHours(startOfDay(date), Number(appointment.time.split(":")[0])), Number(appointment.time.split(":")[1]));
+        const slotEndWithBuffer = addMinutes(slotStart, appointment.duration + SCHEDULING_CONFIG.BUFFER_TIME);
+
+        const conflict = occupiedIntervals.some(inv => {
+          const invStart = setMinutes(setHours(startOfDay(date), Number(inv.start.split(":")[0])), Number(inv.start.split(":")[1]));
+          const invEnd = setMinutes(setHours(startOfDay(date), Number(inv.end.split(":")[0])), Number(inv.end.split(":")[1]));
+          
+          // isOverlapping logic
+          return isBefore(slotStart, invEnd) && isAfter(slotEndWithBuffer, invStart);
+        });
+
+        if (conflict) {
+          throw new Error("Temporal conflict detected. Slot is already allocated within mission bounds.");
+        }
+
+        // Basic availability check (breaks, opening hours, etc)
+        const validation = checkAvailability(appointment, barber, []); // Pass empty existing since we checked manifestation already
+        if (!validation.available) {
+           throw new Error(validation.reason || "Slot no longer available.");
+        }
+
+        // 4. Update Manifest and Commit deployment
+        const docRef = doc(collection(db, APPOINTMENTS_COLLECTION));
+        transaction.set(docRef, {
+          ...appointment,
+          createdAt: serverTimestamp(),
+        });
+        
+        transaction.set(manifestRef, {
+          intervals: [...occupiedIntervals, { start: appointment.time, end: format(slotEndWithBuffer, "HH:mm") }]
+        });
+        
+        return docRef.id;
+      });
+    } catch (error) {
+      handleFirestoreError(error, OperationType.CREATE, APPOINTMENTS_COLLECTION);
+      return '';
+    }
+  },
+
+  getBarberOverrides: async (): Promise<Record<string, any>> => {
+    try {
+      const snapshot = await getDocs(collection(db, 'barber_overrides'));
+      const overrides: Record<string, any> = {};
+      snapshot.forEach(doc => {
+        overrides[doc.id] = doc.data();
+      });
+      return overrides;
+    } catch (error) {
+      console.error("Failed to fetch overrides:", error);
+      return {};
+    }
+  },
+
+  saveBarberOverride: async (barberId: string, data: any): Promise<void> => {
+    try {
+      await setDoc(doc(db, 'barber_overrides', barberId), data, { merge: true });
+    } catch (error) {
+      console.error("Failed to commit personnel override:", error);
+      throw error;
+    }
+  },
+  
+  updateAppointment: async (id: string, updates: Partial<Appointment>): Promise<void> => {
+    try {
+      const docRef = doc(db, APPOINTMENTS_COLLECTION, id);
+      await updateDoc(docRef, updates);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.UPDATE, `${APPOINTMENTS_COLLECTION}/${id}`);
+    }
+  },
+  
+  deleteAppointment: async (id: string): Promise<void> => {
+    try {
+      const docRef = doc(db, APPOINTMENTS_COLLECTION, id);
+      await deleteDoc(docRef);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.DELETE, `${APPOINTMENTS_COLLECTION}/${id}`);
+    }
+  }
+};
