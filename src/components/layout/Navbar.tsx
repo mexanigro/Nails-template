@@ -85,7 +85,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
             ) : (
               // Fallback: Lucide icon square + text name
               <>
-                <div className="flex h-9 w-9 items-center justify-center bg-primary transition-all duration-300 group-hover:scale-105">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary transition-all duration-300 group-hover:scale-105">
                   <BrandIcon className="text-primary-foreground" size={20} />
                 </div>
                 <span className={cn(

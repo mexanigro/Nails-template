@@ -70,16 +70,16 @@
   --color-secondary:           var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
 
-  /* ─── Radius — refined brutalist scale ───────────────────────────────────── */
-  /* Most radii collapse to 0 or near-0. Pill/full stays for micro-elements.   */
+  /* ─── Radius — soft luxury geometry scale ─────────────────────────────────── */
+  /* Rounded surfaces carry the visual language across cards, controls, and CTAs. */
   --radius-none:  0rem;
-  --radius-sm:    0rem;
-  --radius-md:    0rem;
-  --radius-lg:    0rem;
-  --radius-xl:    0.125rem;   /* 2px — barely perceptible, not a full curve */
-  --radius-2xl:   0.125rem;
-  --radius-3xl:   0.125rem;
-  --radius-full:  9999px;     /* preserved for status dots, avatars */
+  --radius-sm:    0.5rem;
+  --radius-md:    0.75rem;
+  --radius-lg:    1rem;
+  --radius-xl:    1.25rem;
+  --radius-2xl:   1.5rem;
+  --radius-3xl:   2rem;
+  --radius-full:  9999px;
 
   /* ─── Elevation ──────────────────────────────────────────────────────────── */
   --shadow-elevated:
@@ -102,29 +102,44 @@
     font-family: var(--font-serif);
     letter-spacing: 0.02em;
   }
+
+  /* Global soft geometry defaults for interactive/surface elements. */
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  summary {
+    border-radius: var(--radius-xl);
+  }
+
+  /* Visual containers with borders should not render as hard rectangles. */
+  .border:not(.rounded-none):not(.rounded-full) {
+    border-radius: max(var(--radius-lg), 0.75rem);
+  }
 }
 
 /* ─── Utilities ────────────────────────────────────────────────────────────── */
 @layer utilities {
 
-  /* Dark mode elevation override — flat, sharp, high-contrast */
+  /* Dark mode elevation override — softer and depth-preserving */
   .dark .shadow-elevated {
     box-shadow:
       0 1px 0 0 rgb(255 255 255 / 0.05),
       0 8px 34px -10px rgb(24 15 20 / 0.60);
   }
 
-  /* Sharp panel — replaces the soft glass blur card */
+  /* Soft panel surface used across dashboard and utility views */
   .glass-panel {
-    @apply border border-border bg-background/90 backdrop-blur-sm transition-colors duration-300;
+    @apply rounded-3xl border border-border bg-background/90 backdrop-blur-sm transition-colors duration-300;
   }
   .dark .glass-panel {
     @apply border-white/[0.07] bg-card/80;
   }
 
-  /* Interactive card — sharp, editorial feel */
+  /* Interactive card surface */
   .glass-card-interactive {
-    @apply border border-border bg-card shadow-elevated transition-all duration-300;
+    @apply rounded-3xl border border-border bg-card shadow-elevated transition-all duration-300;
   }
   .glass-card-interactive:hover {
     @apply -translate-y-0.5 border-foreground/20 shadow-lg;
