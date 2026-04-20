@@ -98,7 +98,7 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
               <button
                 type="button"
                 onClick={onBookClick}
-                className="group flex items-center justify-center gap-2.5 rounded-2xl bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-xl shadow-black/30 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-accent/30 active:scale-95 active:translate-y-0"
+                className="group flex items-center justify-center gap-2.5 bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-xl shadow-black/30 transition-all duration-300 hover:bg-foreground hover:text-background hover:-translate-y-0.5 hover:shadow-2xl active:scale-95 active:translate-y-0"
               >
                 <Calendar size={18} />
                 <span>{hero.ctaPrimary}</span>
@@ -108,7 +108,7 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
             {siteConfig.features.showServices && (
               <a
                 href="#services"
-                className="flex items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-white/20 active:scale-95"
+                className="flex items-center justify-center gap-2 border border-white/30 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-white/50 hover:bg-white/20 active:scale-95"
               >
                 {hero.ctaSecondary}
               </a>

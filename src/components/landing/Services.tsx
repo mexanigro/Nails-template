@@ -102,7 +102,7 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
                 </div>
 
                 {/* Price badge — floats over image bottom-right */}
-                <div className="absolute bottom-4 right-4 flex items-baseline gap-1 rounded-xl bg-black/50 px-3 py-1.5 backdrop-blur-md">
+                <div className="absolute bottom-4 right-4 flex items-baseline gap-1 bg-black/55 px-3 py-1.5 backdrop-blur-md">
                   <span className="text-xs font-semibold text-white/60">from</span>
                   <span className="font-serif text-xl font-bold text-accent-light">${service.price}</span>
                 </div>

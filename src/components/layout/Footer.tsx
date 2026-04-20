@@ -49,7 +49,7 @@ export function Footer({
             </div>
             <button
               onClick={onBookClick}
-              className="group flex shrink-0 items-center gap-2.5 rounded-2xl bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-md shadow-accent/20 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25 active:scale-95"
+              className="group flex shrink-0 items-center gap-2.5 bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-md transition-all duration-300 hover:bg-foreground hover:text-background hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
             >
               <Calendar size={16} />
               <span>Book an Appointment</span>
@@ -69,8 +69,8 @@ export function Footer({
               onClick={() => onPageChange("landing")}
               className="group flex items-center gap-2.5 outline-none"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-light shadow-md shadow-accent/20 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-accent/35">
-                <BrandIcon className="text-zinc-950" size={20} />
+              <div className="flex h-9 w-9 items-center justify-center bg-primary transition-all duration-300 group-hover:scale-105">
+                <BrandIcon className="text-primary-foreground" size={20} />
               </div>
               <span className="font-serif text-xl font-bold tracking-wide text-foreground transition-colors duration-300 group-hover:text-accent-light">
                 {brand.name}
@@ -88,7 +88,7 @@ export function Footer({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all duration-300 hover:border-accent/30 hover:text-accent-light"
+                  className="flex h-9 w-9 items-center justify-center border border-border bg-background text-muted-foreground transition-all duration-300 hover:border-foreground/40 hover:text-accent-light"
                 >
                   <Instagram size={15} />
                 </a>
@@ -99,7 +99,7 @@ export function Footer({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all duration-300 hover:border-accent/30 hover:text-accent-light"
+                  className="flex h-9 w-9 items-center justify-center border border-border bg-background text-muted-foreground transition-all duration-300 hover:border-foreground/40 hover:text-accent-light"
                 >
                   <Facebook size={15} />
                 </a>
@@ -110,7 +110,7 @@ export function Footer({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter / X"
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all duration-300 hover:border-accent/30 hover:text-accent-light"
+                  className="flex h-9 w-9 items-center justify-center border border-border bg-background text-muted-foreground transition-all duration-300 hover:border-foreground/40 hover:text-accent-light"
                 >
                   <Twitter size={15} />
                 </a>

@@ -93,7 +93,7 @@ export function Chatbot() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
-            className="group fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-accent/35 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 active:scale-95"
+            className="group fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-black/30 transition-all duration-300 hover:bg-foreground hover:text-background active:scale-95"
           >
             <MessageSquare size={24} className="transition-transform group-hover:scale-110" />
           </motion.button>
@@ -106,7 +106,7 @@ export function Chatbot() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-[100] flex h-[600px] max-h-[calc(100vh-7.5rem)] w-[380px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-3xl border border-border bg-background shadow-2xl transition-colors duration-300"
+            className="fixed bottom-24 right-6 z-[100] flex h-[600px] max-h-[calc(100vh-7.5rem)] w-[380px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden border border-border bg-background shadow-2xl transition-colors duration-300"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-border bg-card px-6 py-4 transition-colors duration-300">
@@ -152,9 +152,9 @@ export function Chatbot() {
 
                   <div
                     className={cn(
-                      "rounded-2xl px-5 py-3.5 text-sm leading-relaxed",
+                      "px-5 py-3.5 text-sm leading-relaxed",
                       msg.role === "user"
-                        ? "rounded-tr-sm bg-primary text-primary-foreground"
+                        ? "bg-primary text-primary-foreground"
                         : "chat-bubble-bot [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:mb-2 [&_ul]:ml-4 [&_ul]:list-disc [&_strong]:text-accent-light",
                     )}
                   >
@@ -200,7 +200,7 @@ export function Chatbot() {
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:bg-secondary disabled:text-muted-foreground disabled:opacity-50"
+                  className="absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-foreground hover:text-background disabled:bg-secondary disabled:text-muted-foreground disabled:opacity-50"
                   aria-label="Send Message"
                 >
                   <Send size={16} className={input.trim() && !isLoading ? "ml-0.5" : ""} />

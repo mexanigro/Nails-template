@@ -92,7 +92,7 @@ export function Gallery({ onViewFull }: { onViewFull: () => void }) {
         >
           <button
             onClick={onViewFull}
-            className="group flex items-center gap-3 rounded-2xl bg-primary px-10 py-4 text-sm font-bold text-primary-foreground shadow-md shadow-accent/20 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/30 active:scale-95"
+            className="group flex items-center gap-3 bg-primary px-10 py-4 text-sm font-bold text-primary-foreground shadow-md transition-all duration-300 hover:bg-foreground hover:text-background hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
           >
             <Images size={16} />
             <span>Explore the Full Portfolio</span>

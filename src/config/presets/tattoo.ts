@@ -30,9 +30,9 @@ export const tattooPreset: NichePreset = {
       "Elite tattoo artists. Custom designs crafted from consultation to completion. Every line, every shade — executed with surgical precision and artistic mastery.",
     ctaPrimary: "BOOK YOUR CONSULTATION",
     ctaSecondary: "VIEW PORTFOLIO",
-    // Premium moody tattoo studio interior — dimly lit, dramatic, professional
+    // Premium tattoo studio interior — real studio environment with moody lighting
     backgroundImage:
-      "https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&q=80&w=2000",
+      "https://images.unsplash.com/photo-1741242951099-e65a66404c1e?auto=format&fit=crop&q=80&w=2000",
   },
 
   // ─── Contact ─────────────────────────────────────────────────────────────────
@@ -116,15 +116,15 @@ export const tattooPreset: NichePreset = {
       name: "Izzy Cross",
       // Portrait: edgy female tattoo artist, studio environment, professional
       photoUrl:
-        "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1677286061466-7cc3531e5027?auto=format&fit=crop&q=80&w=800",
       specialty: "Fine Line & Botanical Illustration",
       bio: "Izzy spent five years as a botanical illustrator before discovering tattooing. Her delicate single-needle line work brings an organic, almost watercolor sensibility to the skin. Specializing in flora, fauna, and abstract minimalism, her pieces feel like they were always part of the body.",
       // Portfolio: finished fine-line tattoos only — no machines, no process shots
       portfolio: [
-        "https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1562962230-16ede47bc281?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1501939387519-cf9c35d4f4eb?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1610942933193-8fafd0973f6d?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1562379825-415aea84ebcf?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1515369867962-4661872b6366?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
         instagram: "https://instagram.com/izzycross.ink",
@@ -146,15 +146,15 @@ export const tattooPreset: NichePreset = {
       name: "Marco Veil",
       // Portrait: male tattoo artist, tattooed arms, professional studio setting
       photoUrl:
-        "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1746703509843-af889aa20300?auto=format&fit=crop&q=80&w=800",
       specialty: "Black & Grey Realism",
       bio: "Marco is widely regarded as one of the West Coast's foremost black-and-grey realism artists. With over 14 years of experience, his hyper-detailed portraiture and cinematic compositions have been featured in international tattoo publications. Every piece Marco creates is a study in light, shadow, and permanence.",
       // Portfolio: finished black & grey realism tattoos only
       portfolio: [
-        "https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1590246814883-55516d9f1e6d?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1566753323558-f4e0952af115?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1707390588496-6c50ad954935?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1699270065530-eb99dbf1d77e?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1640202352521-66c98a02e612?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1662524518420-bbded8ec7811?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
         instagram: "https://instagram.com/marcoveil.tattoo",
@@ -176,15 +176,15 @@ export const tattooPreset: NichePreset = {
       name: "Devon Ash",
       // Portrait: non-binary/androgynous artist, creative professional look
       photoUrl:
-        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1659693707379-f7b696d92011?auto=format&fit=crop&q=80&w=800",
       specialty: "Custom Design & Cover-Ups",
       bio: "Devon is the studio's master problem-solver. Armed with a background in graphic design and a fearless approach to bold compositions, Devon specializes in complex custom pieces and transformative cover-up work. If you have a story to tell on your skin — or a mistake to erase — Devon is your artist.",
       // Portfolio: finished bold custom and cover-up tattoos only
       portfolio: [
-        "https://images.unsplash.com/photo-1601236854227-53bd7e26f7b3?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1543767271-8d55e39b5985?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1597854710480-d36b7e25fb61?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1759247943688-5d47a84dd615?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1712212601990-8274d5566304?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1479767574301-a01c78234a0c?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1686577677352-c9249ed5972a?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
         instagram: "https://instagram.com/devonash.ink",
@@ -227,18 +227,18 @@ export const tattooPreset: NichePreset = {
   // 12 curated finished-tattoo portfolio shots.
   // Rule: NO machines, NO process shots, NO bare needles. Only completed art on skin.
   gallery: [
-    "https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1562962230-16ede47bc281?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1590246814883-55516d9f1e6d?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1566753323558-f4e0952af115?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1601236854227-53bd7e26f7b3?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1543767271-8d55e39b5985?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1597854710480-d36b7e25fb61?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1479767574301-a01c78234a0c?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1501939387519-cf9c35d4f4eb?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1610942933193-8fafd0973f6d?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1562379825-415aea84ebcf?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1515369867962-4661872b6366?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1707390588496-6c50ad954935?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1699270065530-eb99dbf1d77e?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1640202352521-66c98a02e612?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1662524518420-bbded8ec7811?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1759247943688-5d47a84dd615?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1712212601990-8274d5566304?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1686577677352-c9249ed5972a?auto=format&fit=crop&q=80&w=1200",
   ],
 
   // ─── Section Copy ─────────────────────────────────────────────────────────────
@@ -252,13 +252,13 @@ export const tattooPreset: NichePreset = {
       // services[1] Fine Line             → needle close-up on delicate fine line work
       // services[2] Black & Grey Realism  → artist shading a realistic portrait tattoo
       // services[3] Cover-Up & Rework     → artist working over an existing tattoo
-      // services[4] Precision Piercing    → professional piercing in progress
+      // services[4] Precision Piercing    → professional piercing-related close-up
       images: [
-        "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1590246814883-55516d9f1e6d?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1753283463956-57f16faf217c?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1769605767681-749db570b426?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1769605767707-80909ec160cc?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1769605767720-6b512d96aa4e?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1692220361348-70bc089b3e6d?auto=format&fit=crop&q=80&w=600",
       ],
     },
     team: {
@@ -272,7 +272,7 @@ export const tattooPreset: NichePreset = {
       subtitle: "Why Choose Us",
       // Premium tattoo studio interior — clean, professional, dramatic lighting
       mainImage:
-        "https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&q=80&w=1000",
+        "https://images.unsplash.com/photo-1741242951099-e65a66404c1e?auto=format&fit=crop&q=80&w=1000",
       badge: "10 Years\nOf Art",
       benefits: [
         {

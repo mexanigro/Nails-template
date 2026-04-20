@@ -15,11 +15,11 @@ type Step = "service" | "staff" | "datetime" | "details" | "payment" | "success"
 
 /** Visual-only field & surface tokens — no logic impact */
 const fieldWithIcon =
-  "w-full rounded-2xl border border-border bg-muted/50 py-4 pl-12 pr-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-muted/30";
+  "w-full border border-border bg-muted/50 py-4 pl-12 pr-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-muted/30";
 const fieldAi =
-  "flex-1 rounded-xl border border-border bg-muted/50 px-3 py-3 text-xs text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-muted/30";
+  "flex-1 border border-border bg-muted/50 px-3 py-3 text-xs text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-muted/30";
 const btnPrimaryFull =
-  "mt-4 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-primary py-4 text-sm font-bold text-primary-foreground shadow-md shadow-accent/20 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25 active:scale-95 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0";
+  "mt-4 flex w-full items-center justify-center gap-2.5 bg-primary py-4 text-sm font-bold text-primary-foreground shadow-md transition-all duration-300 hover:bg-foreground hover:text-background hover:-translate-y-0.5 hover:shadow-lg active:scale-95 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0";
 
 export function BookingWizard({ onClose }: { onClose: () => void }) {
   const { services: SERVICES, staff: STAFF, brand, payment: PAYMENT_CONFIG, sections } = siteConfig;
@@ -252,7 +252,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                 <div className="flex flex-col items-center gap-2 min-w-[60px]">
                   <div className={cn(
                     "flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all duration-300",
-                    isActive ? "scale-110 border-accent-light bg-accent-light text-zinc-950" :
+                    isActive ? "scale-110 border-primary bg-primary text-primary-foreground" :
                     isDone ? "border-primary/40 bg-muted text-primary" :
                     "border-border bg-card text-muted-foreground"
                   )}>
@@ -283,7 +283,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
         <button
           type="button"
           onClick={handleClose}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
+          className="flex h-9 w-9 shrink-0 items-center justify-center border border-border text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
         >
           <X size={18} />
         </button>
@@ -304,7 +304,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               <h3 className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Choose a service</h3>
               
               {/* AI Consultant Trigger */}
-              <div className="group relative mb-6 overflow-hidden rounded-3xl border border-border bg-muted/40 p-6 backdrop-blur-sm transition-all hover:border-accent-light/40">
+              <div className="group relative mb-6 overflow-hidden border border-border bg-muted/40 p-6 backdrop-blur-sm transition-all hover:border-foreground/30">
                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                     <Sparkles size={60} />
                  </div>
@@ -319,7 +319,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                       <button 
                         type="button"
                         onClick={() => setShowAiConsult(true)}
-                        className="rounded-xl border border-border bg-card p-3 text-accent-light shadow-sm transition-all hover:bg-accent-light hover:text-zinc-950 active:scale-95"
+                        className="border border-border bg-card p-3 text-accent-light shadow-sm transition-all hover:bg-foreground hover:text-background active:scale-95"
                       >
                          <Sparkles size={20} />
                       </button>
@@ -345,7 +345,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                            type="button"
                            onClick={runAiConsultation}
                            disabled={isConsulting || !aiQuery.trim()}
-                           className="flex min-w-[44px] items-center justify-center rounded-xl bg-primary p-3 text-primary-foreground transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 disabled:cursor-not-allowed disabled:bg-secondary disabled:text-muted-foreground"
+                           className="flex min-w-[44px] items-center justify-center bg-primary p-3 text-primary-foreground transition-all duration-300 hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:bg-secondary disabled:text-muted-foreground"
                          >
                             {isConsulting ? <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground" /> : <Send size={18} />}
                          </button>
@@ -375,7 +375,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                     type="button"
                     key={s.id}
                     onClick={() => { setSelectedService(s); setStep("staff"); }}
-                    className="group flex items-center justify-between rounded-2xl border border-border bg-card p-5 text-left shadow-sm transition-all duration-200 hover:border-accent/30 hover:shadow-md"
+                    className="group flex items-center justify-between border border-border bg-card p-5 text-left shadow-sm transition-all duration-200 hover:border-foreground/30 hover:shadow-md"
                   >
                     <div>
                       <h4 className="font-bold text-foreground transition-colors duration-200 group-hover:text-accent-light">{s.name}</h4>
@@ -409,9 +409,9 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                 <button
                   type="button"
                   onClick={() => { setAnySpecialist(true); setSelectedStaff(null); setStep("datetime"); }}
-                  className="group flex items-center gap-5 rounded-2xl border border-border bg-muted/40 p-4 text-left backdrop-blur-sm transition-all hover:border-accent-light/50"
+                  className="group flex items-center gap-5 border border-border bg-muted/40 p-4 text-left backdrop-blur-sm transition-all hover:border-foreground/40"
                 >
-                  <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl border border-border bg-card text-accent-light transition-transform group-hover:scale-105">
+                  <div className="flex h-16 w-16 items-center justify-center overflow-hidden border border-border bg-card text-accent-light transition-transform group-hover:scale-105">
                     <User size={32} />
                   </div>
                   <div className="flex-1">
@@ -428,9 +428,9 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                     type="button"
                     key={b.id}
                     onClick={() => { setSelectedStaff(b); setAnySpecialist(false); setStep("datetime"); }}
-                    className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 text-left shadow-sm transition-all duration-200 hover:border-accent/30 hover:shadow-md"
+                    className="group flex items-center gap-4 border border-border bg-card p-4 text-left shadow-sm transition-all duration-200 hover:border-foreground/30 hover:shadow-md"
                   >
-                    <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl grayscale transition-all duration-300 group-hover:grayscale-0">
+                    <div className="h-14 w-14 shrink-0 overflow-hidden grayscale transition-all duration-300 group-hover:grayscale-0">
                       <img src={b.photoUrl} className="h-full w-full object-cover" alt={b.name} loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -491,7 +491,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                         onClick={() => { setSelectedTime(time); setStep("details"); }}
                         className={cn(
                           "rounded-xl border py-3 text-sm font-bold transition-all",
-                          selectedTime === time ? "border-accent-light bg-accent-light text-zinc-950" : "border-border bg-card text-foreground hover:border-primary/40 dark:bg-card/90"
+                          selectedTime === time ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-foreground hover:border-foreground/40 dark:bg-card/90"
                         )}
                       >
                         {time}
@@ -623,7 +623,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="mt-4 w-full rounded-2xl border border-border bg-secondary p-5 font-black uppercase tracking-widest text-secondary-foreground transition-colors hover:bg-muted"
+                className="mt-4 w-full border border-border bg-secondary p-5 font-black uppercase tracking-widest text-secondary-foreground transition-colors hover:bg-muted"
               >
                 Close & Notify Me Later
               </button>
@@ -650,7 +650,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                   <button
                     type="button"
                     onClick={handleClose}
-                    className="mt-4 w-full rounded-2xl bg-primary p-4 font-bold uppercase tracking-widest text-primary-foreground shadow-md transition-colors hover:bg-accent-light hover:text-zinc-950"
+                    className="mt-4 w-full bg-primary p-4 font-bold uppercase tracking-widest text-primary-foreground shadow-md transition-colors hover:bg-foreground hover:text-background"
                   >
                     Done
                   </button>
@@ -701,7 +701,7 @@ export function BookingWizard({ onClose }: { onClose: () => void }) {
                     <button
                       type="button"
                       onClick={handleClose}
-                      className="w-full rounded-xl bg-primary p-4 text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-md transition-colors hover:bg-accent-light hover:text-zinc-950"
+                      className="w-full bg-primary p-4 text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-md transition-colors hover:bg-foreground hover:text-background"
                     >
                       Done
                     </button>

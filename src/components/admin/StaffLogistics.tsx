@@ -169,7 +169,7 @@ export function StaffLogistics() {
                 onClick={handleSave}
                 disabled={isSaving}
                 type="button"
-                className="flex items-center gap-3 rounded-xl bg-primary px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-primary-foreground shadow-xl shadow-accent/10 transition-all hover:bg-accent-light hover:text-zinc-950 disabled:bg-muted disabled:text-muted-foreground"
+                className="flex items-center gap-3 bg-primary px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-primary-foreground shadow-xl transition-all hover:bg-foreground hover:text-background disabled:bg-muted disabled:text-muted-foreground"
               >
                 {isSaving ? (
                    <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />

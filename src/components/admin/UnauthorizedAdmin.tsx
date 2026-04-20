@@ -38,7 +38,7 @@ export function UnauthorizedAdmin({ email, onSignOut }: Props) {
         <button
           type="button"
           onClick={() => void onSignOut()}
-          className="w-full rounded-2xl bg-primary px-8 py-4 text-sm font-black uppercase tracking-widest text-primary-foreground shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950"
+          className="w-full bg-primary px-8 py-4 text-sm font-black uppercase tracking-widest text-primary-foreground shadow-lg transition-all duration-300 hover:bg-foreground hover:text-background"
         >
           Cerrar sesión
         </button>

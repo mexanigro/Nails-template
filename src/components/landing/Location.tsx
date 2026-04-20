@@ -110,8 +110,8 @@ export function Location() {
                 />
                 {/* Pin overlay */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent-light shadow-lg shadow-accent/30">
-                    <MapPin size={28} className="text-zinc-950" fill="currentColor" />
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary shadow-lg shadow-black/30">
+                    <MapPin size={28} className="text-primary-foreground" fill="currentColor" />
                   </div>
                   <div className="rounded-2xl border border-border bg-card/90 px-6 py-4 text-center shadow-lg backdrop-blur-sm">
                     <p className="text-xs font-bold uppercase tracking-widest text-accent-light">
@@ -124,7 +124,7 @@ export function Location() {
                       {contact.address.cityStateZip}
                     </p>
                   </div>
-                  <span className="flex items-center gap-1.5 rounded-full bg-black/40 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-accent-light group-hover:text-zinc-950">
+                  <span className="flex items-center gap-1.5 rounded-full bg-black/40 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-foreground group-hover:text-background">
                     <ExternalLink size={11} />
                     Open in Google Maps
                   </span>

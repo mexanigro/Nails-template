@@ -36,10 +36,10 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, rotate: 6, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="absolute -bottom-6 -right-6 hidden w-52 overflow-hidden rounded-3xl bg-accent-light p-7 shadow-xl shadow-accent/30 transition-transform duration-500 hover:rotate-0 md:block"
+              className="absolute -bottom-6 -right-6 hidden w-52 overflow-hidden bg-primary p-7 shadow-xl shadow-black/30 transition-transform duration-500 hover:rotate-0 md:block"
             >
-              <Icons.Star className="mb-3 text-zinc-950" size={32} fill="currentColor" />
-              <p className="whitespace-pre-line font-serif text-2xl font-bold leading-tight text-zinc-950">
+              <Icons.Star className="mb-3 text-primary-foreground" size={32} fill="currentColor" />
+              <p className="whitespace-pre-line font-serif text-2xl font-bold leading-tight text-primary-foreground">
                 {sectionConfig.badge}
               </p>
             </motion.div>

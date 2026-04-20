@@ -199,7 +199,7 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-2xl rounded-3xl border border-border bg-card/95 p-6 text-card-foreground shadow-elevated backdrop-blur-md transition-colors duration-300 md:p-8 dark:bg-card/90"
+              className="relative w-full max-w-2xl border border-border bg-card/95 p-6 text-card-foreground shadow-elevated backdrop-blur-md transition-colors duration-300 md:p-8 dark:bg-card/90"
             >
               <BookingWizard onClose={() => setShowBooking(false)} />
             </motion.div>
@@ -281,7 +281,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-accent-light selection:text-zinc-950 transition-colors duration-300">
+    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary selection:text-primary-foreground transition-colors duration-300">
       <Navbar
         onBookClick={handleBookNow}
         onPageChange={navigatePublic}

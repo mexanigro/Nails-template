@@ -113,7 +113,7 @@ export function Testimonials() {
                   <div className={cn(
                     "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold",
                     isFeatured
-                      ? "bg-accent-light text-zinc-950"
+                      ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground"
                   )}>
                     {getInitials(review.name)}

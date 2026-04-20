@@ -72,12 +72,11 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
             className="group flex shrink-0 items-center gap-2.5 outline-none"
           >
             <div className={cn(
-              "flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-300",
-              "bg-accent-light shadow-md shadow-accent/20",
-              "group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-accent/35 group-hover:rotate-0",
-              !scrolled && "rotate-3"
+              "flex h-9 w-9 items-center justify-center transition-all duration-300",
+              "bg-primary",
+              "group-hover:scale-105"
             )}>
-              <BrandIcon className="text-zinc-950" size={20} />
+              <BrandIcon className="text-primary-foreground" size={20} />
             </div>
             <span className={cn(
               "font-serif text-xl font-bold tracking-wide transition-colors duration-300",
@@ -92,7 +91,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
             {navLinks.map((link) => {
               const isActive = currentPage === "gallery" && link.name === "Gallery";
               const baseClass = cn(
-                "relative px-3.5 py-2 text-sm font-medium tracking-wide rounded-xl transition-all duration-200",
+                "relative px-3.5 py-2 text-sm font-medium tracking-wide transition-all duration-200",
                 isActive
                   ? "text-accent-light"
                   : overlayNav
@@ -128,7 +127,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
             {siteConfig.features.showBooking && (
               <button
                 onClick={onBookClick}
-                className="group flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-md shadow-accent/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-light hover:text-zinc-950 hover:shadow-lg hover:shadow-accent/30 active:scale-95 active:translate-y-0"
+                className="group flex items-center gap-2 bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground hover:text-background hover:shadow-lg active:scale-95 active:translate-y-0"
               >
                 <Calendar size={15} className="transition-transform duration-300 group-hover:rotate-12" />
                 Book Now
@@ -143,7 +142,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
               className={cn(
-                "flex h-9 w-9 items-center justify-center rounded-xl border transition-all duration-200",
+                "flex h-9 w-9 items-center justify-center border transition-all duration-200",
                 overlayNav
                   ? "border-white/20 text-white hover:bg-white/10"
                   : "border-border bg-card text-foreground hover:bg-muted"
@@ -192,7 +191,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
               {navLinks.map((link) => {
                 const isActive = currentPage === "gallery" && link.name === "Gallery";
                 const itemClass = cn(
-                  "flex w-full items-center rounded-xl px-4 py-3 text-base font-medium transition-all duration-200",
+                  "flex w-full items-center px-4 py-3 text-base font-medium transition-all duration-200",
                   isActive
                     ? "bg-accent/10 text-accent-light"
                     : "text-foreground hover:bg-muted hover:text-accent-light"
@@ -223,7 +222,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
                   <div className="my-2 h-px bg-border" />
                   <button
                     onClick={() => { onBookClick(); setIsOpen(false); }}
-                    className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-primary py-3.5 text-base font-semibold text-primary-foreground shadow-md shadow-accent/20 transition-all duration-300 hover:bg-accent-light hover:text-zinc-950 active:scale-95"
+                    className="flex w-full items-center justify-center gap-2.5 bg-primary py-3.5 text-base font-semibold text-primary-foreground shadow-md transition-all duration-300 hover:bg-foreground hover:text-background active:scale-95"
                   >
                     <Calendar size={18} />
                     Book an Appointment
