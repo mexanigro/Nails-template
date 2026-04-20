@@ -4,46 +4,44 @@
 
 /*
  * ─── Brand & Semantic Tokens ────────────────────────────────────────────────
- * Monochrome premium tattoo studio palette.
- * Light mode = editorial ink-on-paper.
- * Dark mode  = deep black studio, off-white type.
- * --brand-accent is stark white in dark / near-black in light for
- * maximum contrast on CTAs without any warm hue contamination.
+ * Premium nail studio palette.
+ * Light mode = soft luxury (warm ivory + rose quartz + deep plum).
+ * Dark mode  = rich plum backdrop with warm off-white contrast.
  */
 :root {
-  --brand-accent:       #0a0a0a;
-  --brand-accent-light: #1a1a1a;
-  --brand-surface-dark: #050505;
+  --brand-accent:       #c4707a;
+  --brand-accent-light: #d4848e;
+  --brand-surface-dark: #0f0a0c;
 
-  --background:         #f5f5f5;
-  --foreground:         #0a0a0a;
-  --muted:              #e8e8e8;
-  --muted-foreground:   #6b6b6b;
+  --background:         #faf8f6;
+  --foreground:         #1a1218;
+  --muted:              #f0ecea;
+  --muted-foreground:   #8a7070;
   --card:               #ffffff;
-  --card-foreground:    #0a0a0a;
-  --border:             #d0d0d0;
-  --primary:            #0a0a0a;
-  --primary-foreground: #f5f5f5;
-  --secondary:          #e8e8e8;
-  --secondary-foreground: #0a0a0a;
+  --card-foreground:    #1a1218;
+  --border:             #e8ddd9;
+  --primary:            #1a1218;
+  --primary-foreground: #faf8f6;
+  --secondary:          #f0ecea;
+  --secondary-foreground: #1a1218;
 }
 
 .dark {
-  --brand-accent:       #ededed;
-  --brand-accent-light: #ffffff;
-  --brand-surface-dark: #050505;
+  --brand-accent:       #d4848e;
+  --brand-accent-light: #e8a0aa;
+  --brand-surface-dark: #0f0a0c;
 
-  --background:         #050505;
-  --foreground:         #ededed;
-  --muted:              #111111;
-  --muted-foreground:   #888888;
-  --card:               #0f0f0f;
-  --card-foreground:    #ededed;
-  --border:             #1e1e1e;
-  --primary:            #ededed;
-  --primary-foreground: #050505;
-  --secondary:          #111111;
-  --secondary-foreground: #ededed;
+  --background:         #0f0a0c;
+  --foreground:         #f5ede8;
+  --muted:              #1e1418;
+  --muted-foreground:   #a08888;
+  --card:               #160e11;
+  --card-foreground:    #f5ede8;
+  --border:             #2e1e22;
+  --primary:            #f5ede8;
+  --primary-foreground: #0f0a0c;
+  --secondary:          #1e1418;
+  --secondary-foreground: #f5ede8;
 }
 
 @theme {
