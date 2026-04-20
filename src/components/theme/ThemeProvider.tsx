@@ -13,7 +13,7 @@ type ThemeProviderState = {
   setTheme: (theme: Theme) => void;
 };
 
-/** Tailwind `md` — escritorio mantiene siempre modo claro (navbar desktop sin toggle). */
+/** Tailwind `md` — escritorio mantiene siempre modo light (sin toggle). */
 export const DESKTOP_THEME_MEDIA = "(min-width: 768px)";
 
 const initialState: ThemeProviderState = {
@@ -23,24 +23,13 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-function readStoredTheme(storageKey: string, fallback: Theme): Theme {
-  try {
-    const raw = localStorage.getItem(storageKey);
-    if (raw === "light" || raw === "dark") return raw;
-  } catch {
-    /* ignore */
-  }
-  return fallback;
-}
-
 function isDesktopViewport(): boolean {
   return typeof window !== "undefined" && window.matchMedia(DESKTOP_THEME_MEDIA).matches;
 }
 
-function initialTheme(storageKey: string, defaultTheme: Theme): Theme {
+function initialTheme(defaultTheme: Theme): Theme {
   if (typeof window === "undefined") return defaultTheme;
-  if (isDesktopViewport()) return "light";
-  return readStoredTheme(storageKey, defaultTheme);
+  return "light";
 }
 
 export function ThemeProvider({
@@ -50,7 +39,7 @@ export function ThemeProvider({
   ...props
 }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() =>
-    initialTheme(storageKey, defaultTheme),
+    initialTheme(defaultTheme),
   );
 
   /** Sincroniza `html` con el estado (y fuerza light en escritorio). */
@@ -67,7 +56,7 @@ export function ThemeProvider({
     root.classList.add(theme === "dark" ? "dark" : "light");
   }, [theme]);
 
-  /** Al cruzar el breakpoint, restaurar preferencia móvil o forzar light en desktop. */
+  /** Al cruzar el breakpoint, forzar arranque light y mantener toggle manual en móvil/tablet. */
   useEffect(() => {
     const mq = window.matchMedia(DESKTOP_THEME_MEDIA);
 
@@ -81,14 +70,13 @@ export function ThemeProvider({
         return;
       }
 
-      const restored = readStoredTheme(storageKey, defaultTheme);
-      setThemeState(restored);
-      root.classList.add(restored === "dark" ? "dark" : "light");
+      setThemeState("light");
+      root.classList.add("light");
     };
 
     mq.addEventListener("change", onBreakpointChange);
     return () => mq.removeEventListener("change", onBreakpointChange);
-  }, [storageKey, defaultTheme]);
+  }, [defaultTheme]);
 
   const value = {
     theme,

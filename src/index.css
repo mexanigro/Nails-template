@@ -46,10 +46,10 @@
 
 @theme {
   /* ─── Typography ─────────────────────────────────────────────────────────── */
-  /* Cormorant Garamond — editorial serif for premium headings                 */
-  /* Jost               — geometric sans for body and UI                        */
+  /* Cormorant Garamond — editorial serif for all headings                      */
+  /* Lato               — clean, elegant body and UI text                       */
   /* Great Vibes        — decorative script accent                              */
-  --font-sans:   "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:   "Lato", ui-sans-serif, system-ui, sans-serif;
   --font-serif:  "Cormorant Garamond", ui-serif, serif;
   --font-script: "Great Vibes", cursive;
 
@@ -91,20 +91,16 @@
 @layer base {
   html, body {
     @apply bg-background text-foreground antialiased transition-colors duration-300;
+    font-family: var(--font-sans);
   }
   html {
     scroll-behavior: smooth;
   }
 
-  /* h1 / h2 — Cormorant Garamond: editorial serif with open tracking.          */
-  h1, h2 {
+  /* h1–h6 — Cormorant Garamond across all heading levels.                      */
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
     letter-spacing: 0.02em;
-  }
-  /* h3–h6 — Jost: clean geometric support hierarchy.                           */
-  h3, h4, h5, h6 {
-    font-family: var(--font-sans);
-    letter-spacing: -0.01em;
   }
 }
 
