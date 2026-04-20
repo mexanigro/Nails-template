@@ -96,7 +96,7 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
 
                 {/* Service index number */}
                 <div className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm">
-                  <span className="font-gothic text-base text-white/80">
+                  <span className="font-script text-base text-white/80">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>

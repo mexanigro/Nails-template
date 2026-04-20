@@ -46,12 +46,12 @@
 
 @theme {
   /* ─── Typography ─────────────────────────────────────────────────────────── */
-  /* Cinzel Decorative  — Roman imperial authority, all-caps small-caps feel    */
-  /* UnifrakturMaguntia — blackletter gothic accent, used sparingly for drama   */
-  /* Montserrat Alternates — clean geometric body, readable modern backbone     */
-  --font-sans:   "Montserrat Alternates", ui-sans-serif, system-ui, sans-serif;
-  --font-serif:  "Cinzel Decorative", ui-serif, serif;
-  --font-gothic: "UnifrakturMaguntia", cursive;
+  /* Cormorant Garamond — editorial serif for premium headings                 */
+  /* Jost               — geometric sans for body and UI                        */
+  /* Great Vibes        — decorative script accent                              */
+  --font-sans:   "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:  "Cormorant Garamond", ui-serif, serif;
+  --font-script: "Great Vibes", cursive;
 
   /* ─── Semantic color bridge to Tailwind utilities ────────────────────────── */
   --color-accent:              var(--brand-accent);
@@ -96,12 +96,12 @@
     scroll-behavior: smooth;
   }
 
-  /* h1 / h2 — Cinzel Decorative. Roman small-caps, needs positive tracking.   */
+  /* h1 / h2 — Cormorant Garamond: editorial serif with open tracking.          */
   h1, h2 {
     font-family: var(--font-serif);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
   }
-  /* h3–h6 — Montserrat Alternates. Clean geometric, slight tight tracking.    */
+  /* h3–h6 — Jost: clean geometric support hierarchy.                           */
   h3, h4, h5, h6 {
     font-family: var(--font-sans);
     letter-spacing: -0.01em;
