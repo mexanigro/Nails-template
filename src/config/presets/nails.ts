@@ -145,10 +145,10 @@ export const nailsPreset: NichePreset = {
       bio: "Sofia trained as a fine artist before discovering her true canvas — nails. With eight years of experience and a background in illustration, she brings an extraordinary eye for detail to every set she creates. Renowned for intricate hand-painted designs, delicate botanicals, and miniature portraiture, Sofia's work regularly features in Miami lifestyle publications. She approaches every client's brief as a genuine creative collaboration.",
       // Portfolio: finished nail art and gel manicure results only
       portfolio: [
-        "https://images.unsplash.com/photo-1604655861452-77bc5b048d55?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
         "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
         "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1604062953-2009e80b2e51?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
         instagram: "https://instagram.com/sofiareyes.nails",
@@ -175,10 +175,10 @@ export const nailsPreset: NichePreset = {
       bio: "Camille trained at a leading nail academy in Paris before relocating to Miami, bringing a distinctly European precision to her sculpting work. She specialises in architectural nail shapes — long coffins, refined almonds, dramatic stilettos — with flawlessly smooth acrylic application that holds its structure for weeks. Camille's sets are as technically sound as they are visually striking.",
       // Portfolio: finished acrylic sets and sculpted nail results only
       portfolio: [
-        "https://images.unsplash.com/photo-1580916411440-a33ef3df2d60?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1604655861452-77bc5b048d55?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
         "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1604062953-2009e80b2e51?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
         instagram: "https://instagram.com/camilledupont.nails",
@@ -206,8 +206,8 @@ export const nailsPreset: NichePreset = {
       // Portfolio: finished classic manicure and spa pedicure results only
       portfolio: [
         "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1580916411440-a33ef3df2d60?auto=format&fit=crop&q=80&w=1200",
-        "https://images.unsplash.com/photo-1604655861452-77bc5b048d55?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
         "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=1200",
       ],
       social: {
@@ -252,15 +252,15 @@ export const nailsPreset: NichePreset = {
   // 12 curated finished nail art and manicure shots.
   // Rule: NO process shots, NO bare unpolished hands. Only completed nail looks.
   gallery: [
-    "https://images.unsplash.com/photo-1604655861452-77bc5b048d55?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1580916411440-a33ef3df2d60?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1604062953-2009e80b2e51?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1604655861452-77bc5b048d55?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1200",
-    "https://images.unsplash.com/photo-1580916411440-a33ef3df2d60?auto=format&fit=crop&q=80&w=1200",
+    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200",
@@ -282,9 +282,9 @@ export const nailsPreset: NichePreset = {
       images: [
         "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1604655861452-77bc5b048d55?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1580916411440-a33ef3df2d60?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1604062953-2009e80b2e51?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=600",
       ],
