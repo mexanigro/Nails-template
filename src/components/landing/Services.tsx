@@ -4,11 +4,24 @@ import { motion } from "motion/react";
 import { cn } from "../../lib/utils";
 import { siteConfig } from "../../config/site";
 
+// ─── TEMPLATE LAYOUT RULE: Odd-count grid fill ────────────────────────────────
+// Services are rendered in a 2-column grid. When a niche preset defines an
+// odd number of services the last card would otherwise leave an empty cell at
+// the bottom-right. The helpers below detect this case and make the orphan card
+// span both columns, switching it to a horizontal (image-left / text-right)
+// layout so every row is fully occupied regardless of how many services the
+// preset defines. This logic is intentional, preset-agnostic, and must be
+// preserved across all niche clones.
+// ─────────────────────────────────────────────────────────────────────────────
+
 export function Services({ onBookClick }: { onBookClick: () => void }) {
   const { sections } = siteConfig;
   const { services: sectionConfig } = sections;
   const services = siteConfig.services;
-  const isLastOdd = (i: number) => services.length % 2 !== 0 && i === services.length - 1;
+
+  /** True for the last card when the total count is odd (grid orphan). */
+  const isOddOrphan = (i: number) =>
+    services.length % 2 !== 0 && i === services.length - 1;
 
   return (
     <section id="services" className="bg-background px-6 py-28 transition-colors duration-300">
@@ -62,14 +75,14 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
                 "group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-elevated transition-all duration-300",
                 "hover:-translate-y-1.5 hover:border-accent/30 hover:shadow-xl dark:hover:border-accent/20",
                 siteConfig.features.showBooking && "cursor-pointer",
-                isLastOdd(index) && "md:col-span-2 md:flex-row"
+                isOddOrphan(index) && "md:col-span-2 md:flex-row"
               )}
               onClick={siteConfig.features.showBooking ? onBookClick : undefined}
             >
               {/* Image */}
               <div className={cn(
                 "relative overflow-hidden",
-                isLastOdd(index)
+                isOddOrphan(index)
                   ? "aspect-[16/9] md:aspect-auto md:w-1/2"
                   : "aspect-[16/9]"
               )}>
@@ -98,7 +111,7 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
               {/* Content */}
               <div className={cn(
                 "flex flex-col justify-between p-7",
-                isLastOdd(index) && "md:w-1/2"
+                isOddOrphan(index) && "md:w-1/2"
               )}>
                 <div>
                   <h3 className="mb-3 text-xl font-black tracking-tight text-card-foreground transition-colors duration-200 group-hover:text-accent-light">

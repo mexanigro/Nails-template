@@ -18,10 +18,32 @@ export function Team({
   const linkToProfiles = staffPagesEnabled && !!onNavigateToStaffProfile;
   const cardOpensBooking = siteConfig.features.showBooking && !linkToProfiles;
 
+  // ─── TEMPLATE LAYOUT RULE: Odd-count grid fill ──────────────────────────────
+  // The team grid selects its column count based on how many staff members are
+  // defined in the active niche preset. When the last row has fewer cards than
+  // the column count (an "orphan" row), the helpers below centre single orphans
+  // automatically so there is never a blank cell. This logic is intentional,
+  // preset-agnostic, and must be preserved across all niche clones.
+  //   • 1 orphan in a 3-col grid → centred in the middle column (col-start-2)
+  //   • 2 orphans in a 3-col grid → left-aligned naturally (acceptable visually)
+  //   • 1 orphan in a 2-col grid → spans both columns (full-width card)
+  // ─────────────────────────────────────────────────────────────────────────────
   const staffCount = siteConfig.staff.length;
+  const teamCols   = staffCount <= 1 ? 1 : (staffCount === 2 || staffCount === 4 ? 2 : 3);
+  const remainder  = staffCount % teamCols;
+
+  /** Returns the extra Tailwind classes needed to fill the last grid row. */
+  const getOrphanClass = (index: number): string => {
+    if (remainder === 0) return "";                   // every row is already full
+    if (index < staffCount - remainder) return "";    // not an orphan card
+    if (teamCols === 3 && remainder === 1) return "md:col-start-2"; // centre single orphan
+    if (teamCols === 2 && remainder === 1) return "md:col-span-2";  // full-width single orphan
+    return "";                                         // 2-orphan row: natural left-align is fine
+  };
+
   const gridColsClass =
-    staffCount <= 1 ? "" :
-    staffCount === 2 || staffCount === 4 ? "md:grid-cols-2" :
+    teamCols === 1 ? "" :
+    teamCols === 2 ? "md:grid-cols-2" :
     "md:grid-cols-3";
 
   return (
@@ -99,6 +121,7 @@ export function Team({
                 "hover:-translate-y-1.5 hover:border-accent/30 hover:shadow-xl dark:hover:border-accent/20",
                 linkToProfiles && "cursor-pointer",
                 cardOpensBooking && "cursor-pointer",
+                getOrphanClass(index),
               )}
               onClick={cardOpensBooking ? onBookClick : undefined}
             >
