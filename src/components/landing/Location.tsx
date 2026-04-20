@@ -124,7 +124,7 @@ export function Location() {
                       {contact.address.cityStateZip}
                     </p>
                   </div>
-                  <span className="flex items-center gap-1.5 rounded-full bg-black/40 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-foreground group-hover:text-background">
+                  <span className="flex items-center gap-1.5 rounded-full bg-surface-dark/55 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-foreground group-hover:text-background">
                     <ExternalLink size={11} />
                     Open in Google Maps
                   </span>

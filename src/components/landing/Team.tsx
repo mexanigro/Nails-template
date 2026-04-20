@@ -153,7 +153,7 @@ export function Team({
 
                 {/* Specialty badge — overlays bottom of photo */}
                 <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block border border-white/20 bg-black/55 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/85 backdrop-blur-sm">
+                  <span className="inline-block border border-accent-light/35 bg-surface-dark/65 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/90 backdrop-blur-sm">
                     {member.specialty}
                   </span>
                 </div>

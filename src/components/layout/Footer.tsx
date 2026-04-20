@@ -43,10 +43,10 @@ export function Footer({
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
             <div>
               <p className="mb-1 text-xs font-bold uppercase tracking-[0.3em] text-accent-light">
-                Reserve Your Seat
+                Consultation First
               </p>
               <h2 className="font-serif text-3xl font-bold text-foreground md:text-4xl">
-                Ready for your next look?
+                Ready for your next signature set?
               </h2>
             </div>
             <button
@@ -54,7 +54,7 @@ export function Footer({
               className="group flex shrink-0 items-center gap-2.5 bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-md transition-all duration-300 hover:bg-foreground hover:text-background hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
             >
               <Calendar size={16} />
-              <span>Book an Appointment</span>
+              <span>Book Your Session</span>
               <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>

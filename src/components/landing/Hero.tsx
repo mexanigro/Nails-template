@@ -4,10 +4,10 @@ import { motion } from "motion/react";
 import { siteConfig } from "../../config/site";
 
 const STATS = [
-  { icon: Users,  value: "500+",  label: "Clients Served"  },
-  { icon: Award,  value: "10",    label: "Years of Mastery" },
-  { icon: Star,   value: "5.0",   label: "Average Rating"  },
-  { icon: Clock,  value: "3",     label: "Master Artisans" },
+  { icon: Users, value: "1,200+", label: "Clients Styled" },
+  { icon: Award, value: "8", label: "Years of Beauty" },
+  { icon: Star, value: "4.9", label: "Average Rating" },
+  { icon: Clock, value: "3", label: "Expert Technicians" },
 ];
 
 export function Hero({ onBookClick }: { onBookClick: () => void }) {
@@ -42,7 +42,7 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-md"
+            className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-accent-light/35 bg-surface-dark/40 px-4 py-2 backdrop-blur-md"
           >
             {[...Array(5)].map((_, i) => (
               <Star key={i} size={12} className="text-accent-light" fill="currentColor" />
@@ -108,7 +108,7 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
             {siteConfig.features.showServices && (
               <a
                 href="#services"
-                className="flex items-center justify-center gap-2 border border-white/30 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-white/50 hover:bg-white/20 active:scale-95"
+                className="flex items-center justify-center gap-2 border border-accent-light/35 bg-surface-dark/45 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-accent-light/60 hover:bg-surface-dark/65 active:scale-95"
               >
                 {hero.ctaSecondary}
               </a>
@@ -121,12 +121,12 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.85 }}
-          className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md sm:grid-cols-4"
+          className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-accent-light/20 bg-surface-dark/35 backdrop-blur-md sm:grid-cols-4"
         >
           {STATS.map(({ icon: Icon, value, label }) => (
             <div
               key={label}
-              className="flex flex-col items-center gap-1.5 bg-black/20 px-4 py-5 text-center transition-colors duration-200 hover:bg-black/30"
+              className="flex flex-col items-center gap-1.5 bg-surface-dark/45 px-4 py-5 text-center transition-colors duration-200 hover:bg-surface-dark/60"
             >
               <Icon size={18} className="text-accent-light" />
               <span className="font-serif text-2xl font-bold text-white">{value}</span>
