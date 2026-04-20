@@ -5,6 +5,7 @@ import { siteConfig } from "../../config/site";
 import { LEGAL_ROUTES, type LegalDocKind } from "../../config/legalContent";
 import type { PublicShellPage } from "../../types";
 import { useAdminAccess } from "../../hooks/useAdminAccess";
+import { useTheme } from "../theme/ThemeProvider";
 
 export function Footer({
   onAdminClick,
@@ -19,6 +20,7 @@ export function Footer({
 }) {
   const { contact, brand } = siteConfig;
   const { user, loading: authLoading, isAdmin } = useAdminAccess();
+  const { theme } = useTheme();
   const showAdminNavLink = !authLoading && (!user || isAdmin);
   const BrandIcon = (Icons as any)[brand.logoIconName || "Scissors"] || Icons.Scissors;
 
@@ -69,12 +71,24 @@ export function Footer({
               onClick={() => onPageChange("landing")}
               className="group flex items-center gap-2.5 outline-none"
             >
-              <div className="flex h-9 w-9 items-center justify-center bg-primary transition-all duration-300 group-hover:scale-105">
-                <BrandIcon className="text-primary-foreground" size={20} />
-              </div>
-              <span className="font-serif text-xl font-bold tracking-wide text-foreground transition-colors duration-300 group-hover:text-accent-light">
-                {brand.name}
-              </span>
+              {brand.logo ? (
+                // Image logo — wordmark replaces icon+text entirely.
+                <img
+                  src={theme === "dark" ? (brand.logoDark ?? brand.logo) : brand.logo}
+                  alt={brand.name}
+                  className="h-8 w-auto max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+              ) : (
+                // Fallback: Lucide icon square + text name
+                <>
+                  <div className="flex h-9 w-9 items-center justify-center bg-primary transition-all duration-300 group-hover:scale-105">
+                    <BrandIcon className="text-primary-foreground" size={20} />
+                  </div>
+                  <span className="font-serif text-xl font-bold tracking-wide text-foreground transition-colors duration-300 group-hover:text-accent-light">
+                    {brand.name}
+                  </span>
+                </>
+              )}
             </button>
 
             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">

@@ -6,13 +6,16 @@ import { cn } from "../../lib/utils";
 import { siteConfig } from "../../config/site";
 import type { PublicShellPage } from "../../types";
 import { ThemeToggle } from "../theme/ThemeToggle";
+import { useTheme } from "../theme/ThemeProvider";
 
 export function Navbar({ onBookClick, onPageChange, currentPage }: {
   onBookClick: () => void;
   onPageChange: (page: PublicShellPage) => void;
   currentPage: string;
 }) {
-  const BrandIcon = (Icons as any)[siteConfig.brand.logoIconName || "Scissors"] || Icons.Scissors;
+  const { brand } = siteConfig;
+  const { theme } = useTheme();
+  const BrandIcon = (Icons as any)[brand.logoIconName || "Scissors"] || Icons.Scissors;
   const [isOpen, setIsOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
 
@@ -71,19 +74,28 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
             onClick={handleHomeClick}
             className="group flex shrink-0 items-center gap-2.5 outline-none"
           >
-            <div className={cn(
-              "flex h-9 w-9 items-center justify-center transition-all duration-300",
-              "bg-primary",
-              "group-hover:scale-105"
-            )}>
-              <BrandIcon className="text-primary-foreground" size={20} />
-            </div>
-            <span className={cn(
-              "font-serif text-xl font-bold tracking-wide transition-colors duration-300",
-              overlayNav ? "text-white drop-shadow" : "text-foreground"
-            )}>
-              {siteConfig.brand.name}
-            </span>
+            {brand.logo ? (
+              // Image logo — wordmark replaces icon+text entirely.
+              // Dark variant used on hero overlay or in dark theme; falls back to logo.
+              <img
+                src={(overlayNav || theme === "dark") ? (brand.logoDark ?? brand.logo) : brand.logo}
+                alt={brand.name}
+                className="h-8 w-auto max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              // Fallback: Lucide icon square + text name
+              <>
+                <div className="flex h-9 w-9 items-center justify-center bg-primary transition-all duration-300 group-hover:scale-105">
+                  <BrandIcon className="text-primary-foreground" size={20} />
+                </div>
+                <span className={cn(
+                  "font-serif text-xl font-bold tracking-wide transition-colors duration-300",
+                  overlayNav ? "text-white drop-shadow" : "text-foreground"
+                )}>
+                  {brand.name}
+                </span>
+              </>
+            )}
           </a>
 
           {/* ── Desktop links ──────────────────────────────────────── */}

@@ -108,7 +108,11 @@ export type NichePreset = {
     name: string;
     tagline: string;
     description?: string;
+    /** Logo URL for light backgrounds. When set, replaces the icon+text mark. */
     logo?: string;
+    /** Optional logo variant for dark backgrounds / hero overlay. Falls back to `logo`. */
+    logoDark?: string;
+    /** Lucide icon name used when no `logo` URL is provided. */
     logoIconName?: string;
     aiPersona?: string;
   };
@@ -212,8 +216,12 @@ export type SiteConfig = {
     tagline: string;
     /** SEO / social snippet; falls back to tagline in useSEO if omitted */
     description?: string;
+    /** Logo URL for light backgrounds. When set, replaces the icon+text mark. */
     logo?: string;
-    logoIconName?: string; // lucide-react icon name for the brand
+    /** Optional logo variant for dark backgrounds / hero overlay. Falls back to `logo`. */
+    logoDark?: string;
+    /** Lucide icon name used when no `logo` URL is provided. */
+    logoIconName?: string;
     aiPersona?: string;
   };
   features: {
