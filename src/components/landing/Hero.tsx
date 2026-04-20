@@ -57,7 +57,7 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="mb-6 text-5xl font-black leading-[1.05] tracking-wide text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)] sm:text-7xl md:text-8xl"
+            className="mb-6 text-5xl font-black leading-[1.05] tracking-wide text-white drop-shadow-[0_2px_18px_rgba(111,74,86,0.38)] sm:text-7xl md:text-8xl"
           >
             {hero.titlePrefix}{" "}
             <em className="not-italic font-script text-accent-light">
@@ -98,7 +98,7 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
               <button
                 type="button"
                 onClick={onBookClick}
-                className="group flex items-center justify-center gap-2.5 bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-xl shadow-black/30 transition-all duration-300 hover:bg-foreground hover:text-background hover:-translate-y-0.5 hover:shadow-2xl active:scale-95 active:translate-y-0"
+                className="group flex items-center justify-center gap-2.5 bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-xl shadow-surface-dark/20 transition-all duration-300 hover:bg-foreground hover:text-background hover:-translate-y-0.5 hover:shadow-2xl active:scale-95 active:translate-y-0"
               >
                 <Calendar size={18} />
                 <span>{hero.ctaPrimary}</span>

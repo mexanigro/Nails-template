@@ -110,7 +110,7 @@ export function Location() {
                 />
                 {/* Pin overlay */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary shadow-lg shadow-black/30">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary shadow-lg shadow-surface-dark/20">
                     <MapPin size={28} className="text-primary-foreground" fill="currentColor" />
                   </div>
                   <div className="rounded-2xl border border-border bg-card/90 px-6 py-4 text-center shadow-lg backdrop-blur-sm">

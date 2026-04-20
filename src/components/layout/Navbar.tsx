@@ -62,7 +62,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
         className={cn(
           "mx-auto transition-all duration-500 ease-out",
           scrolled
-            ? "max-w-5xl rounded-2xl border border-black/[0.08] bg-background/80 px-4 py-2.5 shadow-lg shadow-black/[0.06] backdrop-blur-xl dark:border-white/[0.08] dark:bg-background/75 dark:shadow-black/25"
+            ? "max-w-5xl rounded-2xl border border-border/80 bg-background/80 px-4 py-2.5 shadow-lg shadow-surface-dark/10 backdrop-blur-xl dark:border-border/80 dark:bg-background/75 dark:shadow-surface-dark/35"
             : "max-w-7xl px-2 py-2"
         )}
       >
@@ -199,7 +199,7 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.98 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="mx-auto mt-2 max-w-lg rounded-2xl border border-black/[0.06] bg-background/95 p-3 shadow-2xl shadow-black/10 backdrop-blur-xl dark:border-white/[0.08] dark:shadow-black/30 md:hidden"
+            className="mx-auto mt-2 max-w-lg rounded-2xl border border-border/70 bg-background/95 p-3 shadow-2xl shadow-surface-dark/15 backdrop-blur-xl dark:border-border/80 dark:shadow-surface-dark/40 md:hidden"
           >
             <div className="flex flex-col gap-0.5">
               {navLinks.map((link) => {

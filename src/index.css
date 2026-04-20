@@ -84,7 +84,7 @@
   /* ─── Elevation ──────────────────────────────────────────────────────────── */
   --shadow-elevated:
     0 1px 0 0 rgb(255 255 255 / 0.04),
-    0 4px 24px -4px rgb(0 0 0 / 0.60);
+    0 8px 28px -10px rgb(111 74 86 / 0.26);
 }
 
 /* ─── Base ────────────────────────────────────────────────────────────────── */
@@ -115,7 +115,7 @@
   .dark .shadow-elevated {
     box-shadow:
       0 1px 0 0 rgb(255 255 255 / 0.05),
-      0 4px 32px -8px rgb(0 0 0 / 0.80);
+      0 8px 34px -10px rgb(24 15 20 / 0.60);
   }
 
   /* Sharp panel — replaces the soft glass blur card */
