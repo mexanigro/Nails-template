@@ -30,9 +30,9 @@ export const tattooPreset: NichePreset = {
       "Elite tattoo artists. Custom designs crafted from consultation to completion. Every line, every shade — executed with surgical precision and artistic mastery.",
     ctaPrimary: "BOOK YOUR CONSULTATION",
     ctaSecondary: "VIEW PORTFOLIO",
-    // Premium tattoo studio interior — real studio environment with moody lighting
+    // Tattoo parlor interior — neon lights, displayed flash art, studio atmosphere
     backgroundImage:
-      "https://images.unsplash.com/photo-1741242951099-e65a66404c1e?auto=format&fit=crop&q=80&w=2000",
+      "https://images.unsplash.com/photo-1763888647744-c566e723c396?auto=format&fit=crop&q=80&w=2000",
   },
 
   // ─── Contact ─────────────────────────────────────────────────────────────────
@@ -272,7 +272,7 @@ export const tattooPreset: NichePreset = {
       subtitle: "Why Choose Us",
       // Premium tattoo studio interior — clean, professional, dramatic lighting
       mainImage:
-        "https://images.unsplash.com/photo-1741242951099-e65a66404c1e?auto=format&fit=crop&q=80&w=1000",
+        "https://images.unsplash.com/photo-1760877611905-0f885a3ce551?auto=format&fit=crop&q=80&w=1000",
       badge: "10 Years\nOf Art",
       benefits: [
         {
