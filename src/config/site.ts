@@ -3,18 +3,20 @@ import type { BusinessNiche, NichePreset, SiteConfig } from "../types";
 import { barberiaPreset } from "./presets/barberia";
 import { esteticaPreset } from "./presets/estetica";
 import { abogadoPreset } from "./presets/abogado";
+import { tattooPreset } from "./presets/tattoo";
 
 // ─── Active Niche ────────────────────────────────────────────────────────────
 // Change this single constant to switch the entire site to a different niche.
 // All content — brand, hero, services, staff, gallery, legal texts — updates
 // automatically. No component files need to be touched.
-const ACTIVE_NICHE: BusinessNiche = "barberia";
+const ACTIVE_NICHE: BusinessNiche = "tattoo";
 
 // ─── Preset Registry ─────────────────────────────────────────────────────────
 const PRESETS: Record<BusinessNiche, NichePreset> = {
   barberia: barberiaPreset,
   estetica: esteticaPreset,
   abogado: abogadoPreset,
+  tattoo: tattooPreset,
 };
 
 // ─── Base Config (niche-agnostic) ─────────────────────────────────────────────
