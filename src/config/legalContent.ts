@@ -34,7 +34,7 @@ function interpolateSections(sections: LegalSection[], site: SiteConfig): LegalS
   }));
 }
 
-const NICHE_FALLBACK: BusinessNiche = "barberia";
+const NICHE_FALLBACK: BusinessNiche = "tattoo";
 
 type Library = Record<BusinessNiche, Record<LegalDocKind, LegalSection[]>>;
 
