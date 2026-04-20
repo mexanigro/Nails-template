@@ -17,7 +17,7 @@ export const nailsPreset: NichePreset = {
       "An upscale nail studio offering precision nail artistry, long-lasting gel systems, and bespoke nail design. Every appointment is a private, unhurried experience crafted around your aesthetic.",
     logoIconName: "Sparkles",
     aiPersona:
-      "You are a virtual specialist at Aura Nail Studio, a premium nail studio in Miami's Design District. Your mission is to guide clients with warmth and expertise — answer questions about our services, help them prepare for their appointment, explain aftercare, and recommend the right technician and treatment for their vision. Be warm, knowledgeable, and beauty-focused. Always mention that every new client begins with a complimentary consultation.",
+      "You are a virtual specialist at Aura Nail Studio, a premium nail studio in Miami's Design District. Your mission is to guide clients with warmth and expertise — answer questions about our services, help them prepare for their appointment, explain aftercare, and recommend the right technician and treatment for their vision. Be warm, knowledgeable, and beauty-focused.",
   },
 
   // ─── Hero ─────────────────────────────────────────────────────────────────────
@@ -26,7 +26,7 @@ export const nailsPreset: NichePreset = {
     titleHighlight: "OUR ART",
     titleSuffix: "PRECISION BEAUTY, EVERY TIME",
     subtitle:
-      "Every appointment begins with a complimentary nail consultation — no deposit, no commitment. Meet your technician, define your look, and let us craft something made entirely for you. Custom nail design executed with expert precision.",
+      "Every appointment begins with a personalized nail design briefing to define your shape, finish, and style direction before your service begins. Custom nail artistry executed with expert precision.",
     ctaPrimary: "BOOK YOUR SESSION",
     ctaSecondary: "VIEW GALLERY",
     // Luxury nail salon interior — soft lighting, elegant station, premium aesthetic
@@ -66,22 +66,13 @@ export const nailsPreset: NichePreset = {
   // If you add or reorder a service here, update sections.services.images below.
   //
   // Pricing model:
-  //   services[0] Free Nail Consultation   → $0 flat — complimentary, no commitment
-  //   services[1] Classic Manicure         → $45 flat
-  //   services[2] Gel Manicure             → $65 flat
-  //   services[3] Acrylic Full Set         → $85 flat
-  //   services[4] Nail Art & Bespoke       → from $25/nail
-  //   services[5] Luxury Spa Pedicure      → $75 flat
-  //   services[6] Nail Extensions & Infills → from $55
+  //   services[0] Classic Manicure          → $45 flat
+  //   services[1] Gel Manicure              → $65 flat
+  //   services[2] Acrylic Full Set          → $85 flat
+  //   services[3] Nail Art & Bespoke        → from $25/nail
+  //   services[4] Luxury Spa Pedicure       → $75 flat
+  //   services[5] Nail Extensions & Infills → from $55
   services: [
-    {
-      id: "consultation",
-      name: "Free Nail Consultation",
-      description:
-        "Start here — completely complimentary, no commitment required. Spend 30 minutes with your nail technician to discuss shape, length, style, and colour direction. Review our design portfolio, ask questions, and arrive at your first session fully confident in your vision.",
-      duration: 30,
-      price: 0,
-    },
     {
       id: "classic-manicure",
       name: "Classic Manicure",
@@ -272,21 +263,19 @@ export const nailsPreset: NichePreset = {
       title: "Polish & Precision",
       subtitle: "Our Services",
       // ACTION shots — one per service, same order as services[].
-      // services[0] Free Consultation     → technician and client reviewing nail designs together
-      // services[1] Classic Manicure      → close-up of technician shaping/buffing nails
-      // services[2] Gel Manicure          → UV lamp curing gel colour on nails
-      // services[3] Acrylic Full Set      → technician sculpting acrylic extension
-      // services[4] Nail Art & Bespoke    → close-up of hand-painting nail art detail
-      // services[5] Luxury Spa Pedicure   → foot soak or pedicure treatment in progress
-      // services[6] Extensions & Infills  → technician applying infill to existing set
+      // services[0] Classic Manicure      → technician applying polish
+      // services[1] Gel Manicure          → in-session manicure detail
+      // services[2] Acrylic Full Set      → sculpted extension result
+      // services[3] Nail Art & Bespoke    → artistic nail detail
+      // services[4] Luxury Spa Pedicure   → finished pedicure result
+      // services[5] Extensions & Infills  → refined manicure finish
       images: [
+        "https://images.unsplash.com/photo-1753285310651-6974a839c992?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1676926606566-58f2e00b592b?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600",
         "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600",
-        "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1707725238063-0c54fb6963d1?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1674691412909-8405f0a19940?auto=format&fit=crop&q=80&w=600",
       ],
     },
     team: {
@@ -310,8 +299,8 @@ export const nailsPreset: NichePreset = {
         },
         {
           iconName: "Sparkles",
-          title: "Consultation First",
-          desc: "Every new client begins with a complimentary consultation. We learn your lifestyle, nail goals, and aesthetic preferences before recommending a single service — because the best results start with the right brief.",
+          title: "Personalized Consultation",
+          desc: "Before each service, we align on your style direction, nail goals, and finish preferences in-chair so your final result feels intentional, wearable, and uniquely yours.",
         },
         {
           iconName: "Palette",
@@ -341,12 +330,12 @@ export const nailsPreset: NichePreset = {
       title: "Get In Touch",
       subtitle: "Start Your Journey",
       description:
-        "Ready to experience precision nail artistry? Send us a message, share any design references you love, and our team will reach out to schedule your complimentary consultation.",
+        "Ready to experience precision nail artistry? Send us a message, share any design references you love, and our team will reach out to schedule your appointment.",
     },
     booking: {
       title: "Book Your Visit",
       tagline:
-        "Begin with a free consultation — meet your technician, define your look, then book your session when you're ready.",
+        "Book your service directly and personalize your look with your technician before your session begins.",
       steps: {
         service: "Service",
         staff: "Technician",

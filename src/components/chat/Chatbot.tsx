@@ -23,7 +23,7 @@ export function Chatbot() {
       {
         id: "init",
         role: "model",
-        text: `Welcome to **${siteConfig.brand.name}**. How can I assist you with your nail services, design ideas, or complimentary consultation today?`,
+        text: `Welcome to **${siteConfig.brand.name}**. How can I assist you with your nail services, design ideas, or appointment today?`,
       },
     ]);
   }, []);

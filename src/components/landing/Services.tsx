@@ -95,19 +95,19 @@ export function Services({ onBookClick }: { onBookClick: () => void }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
 
                 {/* Service index number */}
-                <div className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm">
-                  <span className="font-script text-base text-white/80">
+                <div className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-surface-dark/55 backdrop-blur-sm">
+                  <span className="font-script text-base text-primary-foreground/90">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
                 {/* Price badge — floats over image bottom-right */}
-                <div className="absolute bottom-4 right-4 flex items-baseline gap-1 bg-black/55 px-3 py-1.5 backdrop-blur-md">
+                <div className="absolute bottom-4 right-4 flex items-baseline gap-1 bg-surface-dark/70 px-3 py-1.5 backdrop-blur-md">
                   {service.price === 0 ? (
                     <span className="font-serif text-xl font-bold uppercase tracking-widest text-accent-light">Free</span>
                   ) : (
                     <>
-                      <span className="text-xs font-semibold text-white/60">from</span>
+                      <span className="text-xs font-semibold text-primary-foreground/65">from</span>
                       <span className="font-serif text-xl font-bold text-accent-light">${service.price}</span>
                     </>
                   )}

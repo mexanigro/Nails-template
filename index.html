@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Evita flash claro: escritorio siempre dark; móvil respeta vite-ui-theme -->
+    <!-- Evita flash: escritorio siempre light; móvil/tablet respeta vite-ui-theme -->
     <script>
       (function () {
         try {
@@ -11,7 +11,9 @@
           var stored = localStorage.getItem("vite-ui-theme");
           var root = document.documentElement;
           root.classList.remove("light", "dark");
-          if (desktop || stored !== "light") {
+          if (desktop) {
+            root.classList.add("light");
+          } else if (stored === "dark") {
             root.classList.add("dark");
           } else {
             root.classList.add("light");

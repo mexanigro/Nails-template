@@ -13,11 +13,11 @@ type ThemeProviderState = {
   setTheme: (theme: Theme) => void;
 };
 
-/** Tailwind `md` — escritorio mantiene siempre modo oscuro (navbar desktop sin toggle). */
+/** Tailwind `md` — escritorio mantiene siempre modo claro (navbar desktop sin toggle). */
 export const DESKTOP_THEME_MEDIA = "(min-width: 768px)";
 
 const initialState: ThemeProviderState = {
-  theme: "dark",
+  theme: "light",
   setTheme: () => null,
 };
 
@@ -39,13 +39,13 @@ function isDesktopViewport(): boolean {
 
 function initialTheme(storageKey: string, defaultTheme: Theme): Theme {
   if (typeof window === "undefined") return defaultTheme;
-  if (isDesktopViewport()) return "dark";
+  if (isDesktopViewport()) return "light";
   return readStoredTheme(storageKey, defaultTheme);
 }
 
 export function ThemeProvider({
   children,
-  defaultTheme = "dark",
+  defaultTheme = "light",
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
@@ -53,21 +53,21 @@ export function ThemeProvider({
     initialTheme(storageKey, defaultTheme),
   );
 
-  /** Sincroniza `html` con el estado (y fuerza dark en escritorio). */
+  /** Sincroniza `html` con el estado (y fuerza light en escritorio). */
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
 
     if (isDesktopViewport()) {
-      root.classList.add("dark");
-      setThemeState((t) => (t !== "dark" ? "dark" : t));
+      root.classList.add("light");
+      setThemeState((t) => (t !== "light" ? "light" : t));
       return;
     }
 
     root.classList.add(theme === "dark" ? "dark" : "light");
   }, [theme]);
 
-  /** Al cruzar el breakpoint, restaurar preferencia móvil o forzar dark en desktop. */
+  /** Al cruzar el breakpoint, restaurar preferencia móvil o forzar light en desktop. */
   useEffect(() => {
     const mq = window.matchMedia(DESKTOP_THEME_MEDIA);
 
@@ -76,8 +76,8 @@ export function ThemeProvider({
       root.classList.remove("light", "dark");
 
       if (mq.matches) {
-        root.classList.add("dark");
-        setThemeState("dark");
+        root.classList.add("light");
+        setThemeState("light");
         return;
       }
 

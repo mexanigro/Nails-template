@@ -135,7 +135,9 @@ export function Navbar({ onBookClick, onPageChange, currentPage }: {
 
           {/* ── Right actions ──────────────────────────────────────── */}
           <div className="hidden md:flex items-center gap-2.5">
-            <ThemeToggle />
+            <div className="lg:hidden">
+              <ThemeToggle />
+            </div>
             {siteConfig.features.showBooking && (
               <button
                 onClick={onBookClick}

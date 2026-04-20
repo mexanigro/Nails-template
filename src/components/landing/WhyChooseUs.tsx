@@ -27,7 +27,7 @@ export function WhyChooseUs() {
                 alt="Our standard"
               />
               {/* Subtle darkening at bottom */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface-dark/35 to-transparent" />
             </motion.div>
 
             {/* Badge — floats bottom-right */}
@@ -36,7 +36,7 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, rotate: 6, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="absolute -bottom-6 -right-6 hidden w-52 overflow-hidden bg-primary p-7 shadow-xl shadow-black/30 transition-transform duration-500 hover:rotate-0 md:block"
+              className="absolute -bottom-6 -right-6 hidden w-52 overflow-hidden bg-primary p-7 shadow-xl shadow-surface-dark/35 transition-transform duration-500 hover:rotate-0 md:block"
             >
               <Icons.Star className="mb-3 text-primary-foreground" size={32} fill="currentColor" />
               <p className="whitespace-pre-line font-script text-2xl leading-tight text-primary-foreground">

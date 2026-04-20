@@ -9,9 +9,9 @@
  * Dark mode  = rich plum backdrop with warm off-white contrast.
  */
 :root {
-  --brand-accent:       #c4707a;
-  --brand-accent-light: #d4848e;
-  --brand-surface-dark: #0f0a0c;
+  --brand-accent:       #dca2ac;
+  --brand-accent-light: #edc2c9;
+  --brand-surface-dark: #6f4a56;
 
   --background:         #faf8f6;
   --foreground:         #1a1218;
@@ -20,28 +20,28 @@
   --card:               #ffffff;
   --card-foreground:    #1a1218;
   --border:             #e8ddd9;
-  --primary:            #1a1218;
-  --primary-foreground: #faf8f6;
-  --secondary:          #f0ecea;
+  --primary:            #e8b6bf;
+  --primary-foreground: #1a1218;
+  --secondary:          #f6efec;
   --secondary-foreground: #1a1218;
 }
 
 .dark {
-  --brand-accent:       #d4848e;
-  --brand-accent-light: #e8a0aa;
-  --brand-surface-dark: #0f0a0c;
+  --brand-accent:       #eab7bf;
+  --brand-accent-light: #f5d6db;
+  --brand-surface-dark: #3a252d;
 
-  --background:         #0f0a0c;
-  --foreground:         #f5ede8;
-  --muted:              #1e1418;
-  --muted-foreground:   #a08888;
-  --card:               #160e11;
-  --card-foreground:    #f5ede8;
-  --border:             #2e1e22;
-  --primary:            #f5ede8;
-  --primary-foreground: #0f0a0c;
-  --secondary:          #1e1418;
-  --secondary-foreground: #f5ede8;
+  --background:         #1b1216;
+  --foreground:         #f8efea;
+  --muted:              #2a1c21;
+  --muted-foreground:   #c1a4aa;
+  --card:               #24171c;
+  --card-foreground:    #f8efea;
+  --border:             #3a2730;
+  --primary:            #f1c8cf;
+  --primary-foreground: #1b1216;
+  --secondary:          #312127;
+  --secondary-foreground: #f8efea;
 }
 
 @theme {
