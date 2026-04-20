@@ -52,7 +52,7 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
             </span>
           </motion.div>
 
-          {/* Headline — serif accent word mixed with sans */}
+          {/* Headline — Cormorant throughout; highlight via weight + accent (no script) */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export function Hero({ onBookClick }: { onBookClick: () => void }) {
             className="mb-6 text-5xl font-black leading-[1.05] tracking-wide text-white drop-shadow-[0_2px_18px_rgba(111,74,86,0.38)] sm:text-7xl md:text-8xl"
           >
             {hero.titlePrefix}{" "}
-            <em className="not-italic font-script text-accent-light">
+            <em className="not-italic font-serif font-semibold text-accent-light">
               {hero.titleHighlight}
             </em>
             <br />
