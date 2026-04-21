@@ -320,6 +320,25 @@ export type SiteConfig = {
     contactInquiries: boolean;
   };
   adminEmail: string;
+  /**
+   * Intro splash screen configuration.
+   * Shown once per hard page load on the landing route.
+   * SPA navigation back to home never replays it (tracked by splash-session.ts).
+   */
+  splash: {
+    /** Whether to show the splash screen at all. */
+    enabled: boolean;
+    /**
+     * Total on-screen time in milliseconds before the exit animation fires.
+     * ~2100 ms gives enough time for the logo + name animation to complete.
+     */
+    durationMs: number;
+    /**
+     * Optional full-URL image shown as the splash background.
+     * When omitted the splash uses a solid dark background (current default).
+     */
+    image?: string;
+  };
 };
 
 export type PaymentMode = 'none' | 'deposit' | 'full';

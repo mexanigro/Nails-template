@@ -25,7 +25,7 @@ const PRESETS: Record<BusinessNiche, NichePreset> = {
 // enable/disable features without touching the content layer.
 type BaseConfig = Pick<
   SiteConfig,
-  "features" | "payment" | "notifications" | "adminEmail"
+  "features" | "payment" | "notifications" | "adminEmail" | "splash"
 >;
 
 const BASE_CONFIG: BaseConfig = {
@@ -73,6 +73,15 @@ const BASE_CONFIG: BaseConfig = {
   adminEmail:
     (import.meta.env.VITE_ADMIN_EMAIL ?? "").trim() ||
     "admin@mastertemplate.com",
+
+  /**
+   * Intro splash screen — shown once per hard page load on the landing route.
+   * Disable here to skip for all niches; or override per deployment.
+   */
+  splash: {
+    enabled: true,
+    durationMs: 2100,
+  },
 };
 
 // ─── Final Config Export ──────────────────────────────────────────────────────
