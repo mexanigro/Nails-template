@@ -51,7 +51,7 @@ export function useSEO() {
 
     const origin = window.location.origin;
     const canonicalUrl = `${origin}/`;
-    const ogImageUrl = `${origin}/og-image.png`;
+    const ogImageUrl = `${origin}/og-opengraph-nails.png`;
 
     setCanonical(canonicalUrl);
     setMetaByProperty("og:url", canonicalUrl);
