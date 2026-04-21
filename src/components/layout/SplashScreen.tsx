@@ -36,13 +36,15 @@ const letterVariants = {
  * - Brand name    → site brand typography (font-serif / Cormorant), letter-by-letter.
  * - No user-dismissal: exits only after siteConfig.splash.durationMs.
  * - Exit animation: translateY('-100%') — curtain rising upwards.
+ * - Background uses semantic tokens (warm ivory / plum in dark) — not flat black.
  */
 export function SplashScreen() {
   const { brand, splash } = siteConfig;
   const logo     = brand.logo;
   const logoDark = brand.logoDark;
   const hasLogo  = !!logo || !!logoDark;
-  const logoSrc  = logoDark ?? logo;
+  /** Light splash surface → prefer wordmark for light backgrounds, then dark variant. */
+  const logoSrc  = logo ?? logoDark;
 
   const Icon = (Icons as any)[brand.logoIconName || "Scissors"] || Icons.Scissors;
   const chars = brand.name.split("");
@@ -58,7 +60,7 @@ export function SplashScreen() {
       role="dialog"
       aria-modal="true"
       aria-label={brand.name}
-      className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-8 bg-black"
+      className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-8 bg-gradient-to-b from-background via-secondary to-muted text-foreground transition-colors duration-300"
     >
       {/* Screen-reader-only heading — accessible name */}
       <h1 className="sr-only">{brand.name}</h1>
@@ -110,7 +112,7 @@ export function SplashScreen() {
             key={i}
             variants={letterVariants}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block whitespace-pre font-serif text-3xl font-bold tracking-wide text-white md:text-4xl lg:text-5xl"
+            className="inline-block whitespace-pre font-serif text-3xl font-bold tracking-wide text-foreground md:text-4xl lg:text-5xl"
           >
             {char === " " ? "\u00A0" : char}
           </motion.span>
